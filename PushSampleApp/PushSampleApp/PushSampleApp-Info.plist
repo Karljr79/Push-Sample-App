@@ -20,14 +20,27 @@
 	<string>1.02</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.paypal.simplertransaction</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>sdksampleapp</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.02</string>
+	<key>Default_Merchant_PW</key>
+	<string>11111111</string>
+	<key>Default_Merchant_UN</key>
+	<string>teashop</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>App_Key</key>
-	<string>YOUR APP KEY</string>
-	<key>Local_Campaign</key>
-	<string>YOUR LOCAL CAMPAIGN</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

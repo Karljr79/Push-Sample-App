@@ -8,6 +8,8 @@
 
 #import "PushAppDelegate.h"
 
+//TODO - Add global login bool
+
 @implementation PushAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
