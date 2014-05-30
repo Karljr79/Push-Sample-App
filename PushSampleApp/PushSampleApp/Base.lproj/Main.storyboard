@@ -325,6 +325,58 @@
             </objects>
             <point key="canvasLocation" x="310" y="-36"/>
         </scene>
+        <!--Invoice Table View Controller - Current Invoices-->
+        <scene sceneID="dAp-ra-RfA">
+            <objects>
+                <tableViewController id="uvM-tk-Kuc" customClass="InvoiceTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="S6U-5F-aGs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InvoiceCell" rowHeight="55" id="lhf-Md-Iqn" customClass="InvoiceCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="55"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lhf-Md-Iqn" id="4RH-yj-bUc">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="54"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Jc-m2-beH">
+                                            <rect key="frame" x="12" y="0.0" width="150" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Paid" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqV-u5-Hhb">
+                                            <rect key="frame" x="12" y="25" width="60" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sPS-oK-cEu">
+                                            <rect key="frame" x="208" y="10" width="59" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="amountLabel" destination="5Jc-m2-beH" id="EHK-Mr-gTu"/>
+                                    <outlet property="statusImageView" destination="sPS-oK-cEu" id="dFN-aI-qgy"/>
+                                    <outlet property="statusLabel" destination="AqV-u5-Hhb" id="coU-Dc-CmL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uvM-tk-Kuc" id="Jq2-m7-DLx"/>
+                            <outlet property="delegate" destination="uvM-tk-Kuc" id="8Zl-MR-oZw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Current Invoices" id="lwc-IP-gtJ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZJ-nd-9VV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="757" y="623"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zgK-xe-yOC">
             <objects>
@@ -338,19 +390,40 @@
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="I8T-bQ-Mrw"/>
                         <segue destination="ZCM-wY-1Tt" kind="relationship" relationship="viewControllers" id="ihI-MN-I7H"/>
-                        <segue destination="vga-Z0-cxz" kind="relationship" relationship="viewControllers" id="fJf-w8-6pI"/>
-                        <segue destination="hRt-j5-A25" kind="relationship" relationship="viewControllers" id="cLD-ne-ZZs"/>
+                        <segue destination="DpE-xt-Flt" kind="relationship" relationship="viewControllers" id="oN4-aD-wRI"/>
+                        <segue destination="hRt-j5-A25" kind="relationship" relationship="viewControllers" id="DLC-7b-TlE"/>
+                        <segue destination="vga-Z0-cxz" kind="relationship" relationship="viewControllers" id="lwQ-Sy-geL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbl-TN-SXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-454" y="-389"/>
         </scene>
+        <!--Navigation Controller - Invoice-->
+        <scene sceneID="2FZ-Rs-XTz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DpE-xt-Flt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Invoice" image="list-star-7.png" id="7u6-bS-GJY"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CMM-Sn-ZFm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uvM-tk-Kuc" kind="relationship" relationship="rootViewController" id="wJV-Lr-BKH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDy-JV-6FW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="310" y="623"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bell-7.png" width="30" height="30"/>
         <image name="bookmark-7.png" width="30" height="30"/>
         <image name="home-7.png" width="30" height="30"/>
+        <image name="list-star-7.png" width="30" height="30"/>
         <image name="write-7.png" width="29" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

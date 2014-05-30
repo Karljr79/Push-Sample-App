@@ -17,6 +17,9 @@
     //set the tab bar button colors
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.0/255.0 green:12.0/255.0 blue:250.0/255.0 alpha:1.0]];
     
+//    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+//    UINavigationController *navController = [tabBarController viewControllers][0];
+    
     return YES;
 }
 							
