@@ -199,72 +199,6 @@
             </objects>
             <point key="canvasLocation" x="310" y="1304"/>
         </scene>
-        <!--Itemized View Controller - Itemized-->
-        <scene sceneID="MDx-Ki-hPb">
-            <objects>
-                <viewController id="E3e-g3-hnf" customClass="ItemizedViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="r7X-fx-i9Y"/>
-                        <viewControllerLayoutGuide type="bottom" id="puh-mb-rLE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tEm-eG-o6m">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y7E-bE-ZKT">
-                                <rect key="frame" x="0.0" y="18" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Itemized" id="tpe-wV-KSh"/>
-                                </items>
-                            </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="80V-HN-rVn">
-                                <rect key="frame" x="123" y="205" width="177" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8C-9L-XL7">
-                                <rect key="frame" x="26" y="209" width="94" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RdW-MU-57N">
-                                <rect key="frame" x="66" y="252" width="188" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.80355149869999998" green="0.80355149869999998" blue="0.80355149869999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Set Custom Event">
-                                    <color key="titleColor" red="0.28235294119999998" green="0.18039215689999999" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnCustomEvent:" destination="E3e-g3-hnf" eventType="touchUpInside" id="VTj-rP-01U"/>
-                                    <action selector="btnGreen:" destination="hRt-j5-A25" eventType="touchUpInside" id="1k0-f3-Xml"/>
-                                    <action selector="btnSetCustomTag:" destination="hRt-j5-A25" eventType="touchUpInside" id="lyd-KZ-oZ3"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Custom Events" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELG-Jh-o2z">
-                                <rect key="frame" x="102" y="164" width="117" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Itemized" image="list-star-7.png" id="ZUJ-WB-rhi"/>
-                    <connections>
-                        <outlet property="txtEventName" destination="80V-HN-rVn" id="5mP-ga-bEe"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ijz-Oh-NkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="310" y="633"/>
-        </scene>
         <!--Locals View Controller - Local-->
         <scene sceneID="fLQ-CP-aZT">
             <objects>
@@ -404,7 +338,6 @@
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="I8T-bQ-Mrw"/>
                         <segue destination="ZCM-wY-1Tt" kind="relationship" relationship="viewControllers" id="ihI-MN-I7H"/>
-                        <segue destination="E3e-g3-hnf" kind="relationship" relationship="viewControllers" id="xOr-fR-TpL"/>
                         <segue destination="vga-Z0-cxz" kind="relationship" relationship="viewControllers" id="fJf-w8-6pI"/>
                         <segue destination="hRt-j5-A25" kind="relationship" relationship="viewControllers" id="cLD-ne-ZZs"/>
                     </connections>
@@ -418,7 +351,6 @@
         <image name="bell-7.png" width="30" height="30"/>
         <image name="bookmark-7.png" width="30" height="30"/>
         <image name="home-7.png" width="30" height="30"/>
-        <image name="list-star-7.png" width="30" height="30"/>
         <image name="write-7.png" width="29" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
