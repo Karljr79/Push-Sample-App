@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface LoginViewController : UIViewController <
             UIGestureRecognizerDelegate,
@@ -17,11 +18,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginSpinner;
 @property (weak, nonatomic) IBOutlet UILabel *txtServiceUsed;
+
+@property (nonatomic) IBOutlet PPHMerchantInfo *merchant;
+
 - (IBAction)btnLogin:(id)sender;
 - (void)viewTapped:(UITapGestureRecognizer *)tgr;
-- (void)saveIdToUserDefaults:(NSString*)myString;
 - (void)handleRegistration:(NSString*)trackingID;
 - (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 - (void)dismissKeyboard;
+- (void)setActiveMerchantWithAccessTokenDict:(NSDictionary *)JSON;
+- (void)transitionToTransactionViewController;
 
 @end

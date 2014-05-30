@@ -50,7 +50,7 @@
 		BBBC27BE18A5ACED008E940F /* home-7.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBC27B818A5ACED008E940F /* home-7.png */; };
 		BBBC27BF18A5ACED008E940F /* list-star-7.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBC27B918A5ACED008E940F /* list-star-7.png */; };
 		BBBC27C118A5ACED008E940F /* write-7.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBC27BB18A5ACED008E940F /* write-7.png */; };
-		BBCD38E518A57B2E006E59A3 /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCD38E418A57B2E006E59A3 /* EventsViewController.m */; };
+		BBCD38E518A57B2E006E59A3 /* ItemizedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCD38E418A57B2E006E59A3 /* ItemizedViewController.m */; };
 		BBCD38E818A57C0C006E59A3 /* LocalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCD38E718A57C0C006E59A3 /* LocalsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -126,8 +126,8 @@
 		BBBC27B818A5ACED008E940F /* home-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-7.png"; sourceTree = "<group>"; };
 		BBBC27B918A5ACED008E940F /* list-star-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-star-7.png"; sourceTree = "<group>"; };
 		BBBC27BB18A5ACED008E940F /* write-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "write-7.png"; sourceTree = "<group>"; };
-		BBCD38E318A57B2E006E59A3 /* EventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = EventsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		BBCD38E418A57B2E006E59A3 /* EventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EventsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		BBCD38E318A57B2E006E59A3 /* ItemizedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ItemizedViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		BBCD38E418A57B2E006E59A3 /* ItemizedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ItemizedViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BBCD38E618A57C0C006E59A3 /* LocalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LocalsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		BBCD38E718A57C0C006E59A3 /* LocalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LocalsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 /* End PBXFileReference section */
@@ -272,8 +272,8 @@
 				BB05E96718A2AD0200F0D3CA /* LoginViewController.m */,
 				BB05E96D18A2AFC600F0D3CA /* TagsViewController.h */,
 				BB05E96E18A2AFC600F0D3CA /* TagsViewController.m */,
-				BBCD38E318A57B2E006E59A3 /* EventsViewController.h */,
-				BBCD38E418A57B2E006E59A3 /* EventsViewController.m */,
+				BBCD38E318A57B2E006E59A3 /* ItemizedViewController.h */,
+				BBCD38E418A57B2E006E59A3 /* ItemizedViewController.m */,
 				BBCD38E618A57C0C006E59A3 /* LocalsViewController.h */,
 				BBCD38E718A57C0C006E59A3 /* LocalsViewController.m */,
 				BB05E93818A2AC4800F0D3CA /* Supporting Files */,
@@ -417,7 +417,7 @@
 				BB05E94218A2AC4800F0D3CA /* PushAppDelegate.m in Sources */,
 				13028C3C1937C3C300F4B5E4 /* AFHTTPClient.m in Sources */,
 				13028C411937C3C300F4B5E4 /* AFPropertyListRequestOperation.m in Sources */,
-				BBCD38E518A57B2E006E59A3 /* EventsViewController.m in Sources */,
+				BBCD38E518A57B2E006E59A3 /* ItemizedViewController.m in Sources */,
 				BBCD38E818A57C0C006E59A3 /* LocalsViewController.m in Sources */,
 				BB05E94818A2AC4800F0D3CA /* AboutViewController.m in Sources */,
 				BB05E96818A2AD0200F0D3CA /* LoginViewController.m in Sources */,

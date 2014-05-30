@@ -197,12 +197,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWr-jA-a06" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="306" y="636"/>
+            <point key="canvasLocation" x="310" y="1304"/>
         </scene>
-        <!--Events View Controller - Events-->
+        <!--Itemized View Controller - Itemized-->
         <scene sceneID="MDx-Ki-hPb">
             <objects>
-                <viewController id="E3e-g3-hnf" customClass="EventsViewController" sceneMemberID="viewController">
+                <viewController id="E3e-g3-hnf" customClass="ItemizedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r7X-fx-i9Y"/>
                         <viewControllerLayoutGuide type="bottom" id="puh-mb-rLE"/>
@@ -215,36 +215,9 @@
                                 <rect key="frame" x="0.0" y="18" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Events" id="tpe-wV-KSh"/>
+                                    <navigationItem title="Itemized" id="tpe-wV-KSh"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhE-IK-CBg">
-                                <rect key="frame" x="29" y="92" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.1489032632" blue="0.020786041929999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.96213762370531875" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Buy Now!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnBuyNow:" destination="E3e-g3-hnf" eventType="touchUpInside" id="Ma3-qd-KXG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXR-DV-ao0">
-                                <rect key="frame" x="185" y="92" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.82542883830000002" blue="0.15843733090000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Subscribe">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnBuyNow:" destination="E3e-g3-hnf" eventType="touchUpInside" id="2KF-9N-yRY"/>
-                                    <action selector="btnSubscribe:" destination="E3e-g3-hnf" eventType="touchUpInside" id="dlY-kn-IxQ"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="80V-HN-rVn">
                                 <rect key="frame" x="123" y="205" width="177" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -283,14 +256,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Events" image="list-star-7.png" id="ZUJ-WB-rhi"/>
+                    <tabBarItem key="tabBarItem" title="Itemized" image="list-star-7.png" id="ZUJ-WB-rhi"/>
                     <connections>
                         <outlet property="txtEventName" destination="80V-HN-rVn" id="5mP-ga-bEe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ijz-Oh-NkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="311" y="1311"/>
+            <point key="canvasLocation" x="310" y="633"/>
         </scene>
         <!--Locals View Controller - Local-->
         <scene sceneID="fLQ-CP-aZT">
@@ -431,9 +404,9 @@
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="I8T-bQ-Mrw"/>
                         <segue destination="ZCM-wY-1Tt" kind="relationship" relationship="viewControllers" id="ihI-MN-I7H"/>
-                        <segue destination="hRt-j5-A25" kind="relationship" relationship="viewControllers" id="7pT-rJ-mdp"/>
                         <segue destination="E3e-g3-hnf" kind="relationship" relationship="viewControllers" id="xOr-fR-TpL"/>
                         <segue destination="vga-Z0-cxz" kind="relationship" relationship="viewControllers" id="fJf-w8-6pI"/>
+                        <segue destination="hRt-j5-A25" kind="relationship" relationship="viewControllers" id="cLD-ne-ZZs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbl-TN-SXF" userLabel="First Responder" sceneMemberID="firstResponder"/>

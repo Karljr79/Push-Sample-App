@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Sample App. All rights reserved.
 //
 
-#import "EventsViewController.h"
+#import "ItemizedViewController.h"
 
-@interface EventsViewController ()
+@interface ItemizedViewController ()
 
 @end
 
-@implementation EventsViewController
+@implementation ItemizedViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,31 +38,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)btnBuyNow:(id)sender {
-    //register purchase event
-    //[mySDK registerEvent:@"Purchase" label:@"InApp Purchase"];
-    
-    //show alert confirmation
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:@"Sample App"
-                          message:@"Thanks for Purchasing" delegate:self
-                          cancelButtonTitle:@"Ok"
-                          otherButtonTitles:nil];
-    [alert show];
-}
-
-- (IBAction)btnSubscribe:(id)sender {
-    //register subscribe event
-    //[mySDK registerEvent:@"Subscribe" label:@"Subscription 1"];
-    
-    //show alert confirmation
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:@"Sample App"
-                          message:@"Thanks for Subscribing" delegate:self
-                          cancelButtonTitle:@"Ok"
-                          otherButtonTitles:nil];
-    [alert show];
-}
 
 - (IBAction)btnCustomEvent:(id)sender {
     if (_txtEventName.text.length < 1){

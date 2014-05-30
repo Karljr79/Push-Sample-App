@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EventsViewController : UIViewController<UIGestureRecognizerDelegate>;
-- (IBAction)btnBuyNow:(id)sender;
-- (IBAction)btnSubscribe:(id)sender;
+@interface ItemizedViewController : UIViewController<UIGestureRecognizerDelegate>;
 - (IBAction)btnCustomEvent:(id)sender;
 - (void)viewTapped:(UITapGestureRecognizer *)tgr;
 @property (strong, nonatomic) IBOutlet UITextField *txtEventName;
