@@ -139,6 +139,7 @@
 			files = (
 				13A4FEDC1936AE8A00A7C9FE /* PayPalHereSDK.framework in Frameworks */,
 				13028C201937AD9C00F4B5E4 /* libxml2.dylib in Frameworks */,
+				13028C1E1937AD7D00F4B5E4 /* SystemConfiguration.framework in Frameworks */,
 				13028C101937AD1A00F4B5E4 /* MobileCoreServices.framework in Frameworks */,
 				13028C121937AD2500F4B5E4 /* Security.framework in Frameworks */,
 				13028C141937AD3600F4B5E4 /* CFNetwork.framework in Frameworks */,
@@ -146,7 +147,6 @@
 				13028C161937AD4C00F4B5E4 /* AudioToolbox.framework in Frameworks */,
 				13028C1A1937AD6100F4B5E4 /* AVFoundation.framework in Frameworks */,
 				13028C221937ADC100F4B5E4 /* ExternalAccessory.framework in Frameworks */,
-				13028C1E1937AD7D00F4B5E4 /* SystemConfiguration.framework in Frameworks */,
 				13028C241937ADD000F4B5E4 /* MediaPlayer.framework in Frameworks */,
 				13028C261937ADDD00F4B5E4 /* CoreTelephony.framework in Frameworks */,
 				BB05E93618A2AC4800F0D3CA /* UIKit.framework in Frameworks */,

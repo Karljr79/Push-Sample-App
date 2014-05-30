@@ -14,30 +14,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Let the device know we want to receive push notifications
-	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    
-    //Sample App start session call(REQUIRED), for NSLog output use debugsessionwithlaunchoptions.
-    //place a key called APP_KEY in your info.plist file.  Your app key is located on the Sample App dashboard
-    //This call allows for session tracking.  WIthout it we will not gather session data or report push opens/events
-    
-    //[mySDK debugSessionWithLaunchOptions:launchOptions];
-    
-    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:72.0/255.0 green:46.0/255.0 blue:128.0/255.0 alpha:1.0]];
-    // Override point for customization after application launch.
-    
-
-    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"device_token"] != nil){
-        //register the device token with Sample App.  The tracking ID field is blank because at this point the user is anonymous.
-        //if you knew the tracking id at this point you could pass it in.  For demo purposes this app is set up where you enter
-        //the tracking id at a later point using "setTrackingID"
-        //[mySDK registerDevice:[[NSUserDefaults standardUserDefaults]objectForKey:@"device_token"] withTrackingId:@""];
-    }
-    else{
-        NSLog(@"FAILED TO GET DEVICE TOKEN");
-    }
-    
+    //set the tab bar button colors
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.0/255.0 green:12.0/255.0 blue:250.0/255.0 alpha:1.0]];
     
     return YES;
 }

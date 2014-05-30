@@ -41,12 +41,14 @@
     self.txtUserName.delegate = self;
     self.txtPassword.delegate = self;
     
+//#warning Change this block to use your server's URL
     //This is the PayPal sample server
     self.serviceHost = @"http://desolate-wave-3684.herokuapp.com";
     //This is the level of service to use
     self.serviceArray = [NSURL URLWithString:@"https://www.sandbox.paypal.com/webapps/"];
     self.txtServiceUsed.text = @"Sandbox";
     
+//#warning This is where we set the PP environment
     //tell the SDK to use this endpoint
     [PayPalHereSDK setBaseAPIURL:self.serviceArray];
     NSLog(@"PPH SDK is using the following endpoint: %@", self.serviceArray);
@@ -95,6 +97,7 @@
         NSLog(@"Logging into [%@]", self.serviceHost);
     }
     
+//#warning Change here if your sample server has another method
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:self.serviceHost]];
     httpClient.parameterEncoding = AFJSONParameterEncoding;
     //here we call the login path on the sample server change this if using your own version
