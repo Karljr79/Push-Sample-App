@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InvoiceDetailViewController.h"
 
-@interface InvoiceTableViewController : UITableViewController
+@interface InvoicesViewController : UITableViewController <InvoiceDetailViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *invoices;
 - (UIImage *)imageForStatus:(NSString*)status;

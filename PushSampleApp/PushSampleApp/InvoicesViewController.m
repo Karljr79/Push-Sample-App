@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 OtherLevels. All rights reserved.
 //
 
-#import "InvoiceTableViewController.h"
+#import "InvoicesViewController.h"
 #import "Invoice.h"
 #import "InvoiceCell.h"
 
-@interface InvoiceTableViewController ()
+@interface InvoicesViewController ()
 
 @end
 
-@implementation InvoiceTableViewController
+@implementation InvoicesViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -79,14 +79,26 @@
         return nil;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
+
+#pragma mark - InvoiceDetailViewControllerDelegate
+
+- (void)invoiceDetailViewControllerDidCancel:(InvoiceDetailViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)invoiceDetailViewControllerDidSave:(InvoiceDetailViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 /*
 // Override to support editing the table view.
@@ -117,15 +129,15 @@
 }
 */
 
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"AddInvoice"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        InvoiceDetailViewController *invoiceDetailViewController = [navigationController viewControllers][0];
+        invoiceDetailViewController.delegate = self;
+    }
 }
-*/
 
 @end

@@ -325,10 +325,10 @@
             </objects>
             <point key="canvasLocation" x="310" y="-36"/>
         </scene>
-        <!--Invoice Table View Controller - Current Invoices-->
+        <!--Invoices View Controller - Current Invoices-->
         <scene sceneID="dAp-ra-RfA">
             <objects>
-                <tableViewController id="uvM-tk-Kuc" customClass="InvoiceTableViewController" sceneMemberID="viewController">
+                <tableViewController id="uvM-tk-Kuc" customClass="InvoicesViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="S6U-5F-aGs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -371,11 +371,72 @@
                             <outlet property="delegate" destination="uvM-tk-Kuc" id="8Zl-MR-oZw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Current Invoices" id="lwc-IP-gtJ"/>
+                    <navigationItem key="navigationItem" title="Current Invoices" id="lwc-IP-gtJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="JOc-yS-hgU">
+                            <connections>
+                                <segue destination="G8c-O5-y8w" kind="modal" identifier="AddInvoice" id="gBf-aI-yFk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hZJ-nd-9VV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="757" y="623"/>
+        </scene>
+        <!--Invoice Detail View Controller - Add Invoice-->
+        <scene sceneID="LMb-JT-drx">
+            <objects>
+                <tableViewController id="YfX-gz-HLO" customClass="InvoiceDetailViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qHG-KJ-XPm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="7Pn-ks-Ilu">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Pn-ks-Ilu" id="4Tf-Fa-z7W">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YfX-gz-HLO" id="4hi-bI-V6g"/>
+                            <outlet property="delegate" destination="YfX-gz-HLO" id="02D-QH-RQn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Invoice" id="B6J-nH-WyI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gY9-ab-6Ra">
+                            <connections>
+                                <action selector="cancel:" destination="YfX-gz-HLO" id="Q9j-kX-US4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="CKk-Yv-6I2">
+                            <connections>
+                                <action selector="done:" destination="YfX-gz-HLO" id="1ET-iy-Wmd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i0i-7b-neK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1755" y="623"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7dL-yA-087">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="G8c-O5-y8w" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qHY-Oc-cpU">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="YfX-gz-HLO" kind="relationship" relationship="rootViewController" id="Gxj-hP-EBt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZiX-Gy-JoY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1249" y="623"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zgK-xe-yOC">
