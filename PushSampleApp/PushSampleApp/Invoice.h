@@ -12,5 +12,7 @@
 
 @property (nonatomic, copy) NSDecimalNumber *totalAmount;
 @property (nonatomic, assign) NSString *status;
+@property (nonatomic, copy) NSString *transactionID;
+@property (nonatomic, copy) NSMutableDictionary *shoppingCart;
 
 @end

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PushAppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) NSMutableArray *_invoices;
 
 @end

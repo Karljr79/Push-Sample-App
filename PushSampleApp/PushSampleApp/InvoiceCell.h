@@ -11,7 +11,7 @@
 @interface InvoiceCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *amountLabel;
-@property (nonatomic, weak) IBOutlet UILabel *statusLabel;
+@property (nonatomic, weak) IBOutlet UILabel *transactionIDLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *statusImageView;
 
 @end

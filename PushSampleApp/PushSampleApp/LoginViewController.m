@@ -10,7 +10,7 @@
 
 #import "LoginViewController.h"
 #import "AFNetworking.h"
-#import "PushAppDelegate.h"
+#import "AppDelegate.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface LoginViewController ()

@@ -7,8 +7,10 @@
 //
 
 #import "InvoicesViewController.h"
+#import "PaymentViewController.h"
 #import "Invoice.h"
 #import "InvoiceCell.h"
+#import "AppDelegate.h"
 
 @interface InvoicesViewController ()
 
@@ -31,9 +33,19 @@
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
+    id propertyValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
+    self.invoices = propertyValue;
     
     //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    id propertyValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
+    self.invoices = propertyValue;
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,8 +73,8 @@
     
     Invoice *invoice = (self.invoices)[indexPath.row];
     float invoiceAmount = invoice.totalAmount.floatValue;
-    cell.amountLabel.text = [NSString stringWithFormat:@"%f", invoiceAmount];
-    cell.statusLabel.text = invoice.status;
+    cell.amountLabel.text = [NSString stringWithFormat:@"%.2f", invoiceAmount];
+    cell.transactionIDLabel.text = invoice.transactionID;
     cell.statusImageView.image = [self imageForStatus:invoice.status];
 
     return cell;
@@ -83,8 +95,7 @@
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 #pragma mark - InvoiceDetailViewControllerDelegate
@@ -100,7 +111,6 @@
 }
 
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -111,23 +121,15 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+//12
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    id allInvoices = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
+    PaymentViewController *paymentVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentVC"];
+    paymentVC.invoiceToPay = [allInvoices objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:paymentVC animated:YES];
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

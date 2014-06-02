@@ -7,6 +7,15 @@
 //
 
 #import "InvoiceDetailViewController.h"
+#import "AppDelegate.h"
+#import "Invoice.h"
+
+#define kBURGERS		@"Burgers"
+#define kFRIES          @"Fries"
+#define kSHAKES         @"Shakes"
+#define kPIES           @"Pies"
+#define kPRICE			@"Price"
+#define kQUANTITY		@"Quantity"
 
 @interface InvoiceDetailViewController ()
 
@@ -18,7 +27,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -27,11 +35,10 @@
 {
     [super viewDidLoad];
     
+    self.currInvoice = [[Invoice alloc] init];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,89 +47,132 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
 - (IBAction)cancel:(id)sender
 {
     [self.delegate invoiceDetailViewControllerDidCancel:self];
 }
 - (IBAction)done:(id)sender
 {
-    [self.delegate invoiceDetailViewControllerDidSave:self];
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    if ([self getTotalAmount] > 0.00)
+    {
+        self.currInvoice.totalAmount = (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:[self getTotalAmount]];
+        self.currInvoice.status = @"UnPaid";
+        
+        id allInvoices = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
+        [allInvoices addObject:self.currInvoice];
+        
+        [self.delegate invoiceDetailViewControllerDidSave:self];
+    }
+    else
+    {
+        [self showAlertWithTitle:@"Add Invoice" andMessage:@"Please enter items, total cannot be zero"];
+    }
     
-    // Configure the cell...
     
-    return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (IBAction)btnBurger:(id)sender
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+    
+    NSMutableDictionary *items = [self.currInvoice.shoppingCart valueForKey:kBURGERS];
+	NSNumber *quantity = [items valueForKey:kQUANTITY];
+	[items
+     setObject:[NSDecimalNumber numberWithInt:[quantity intValue] + 1]
+     forKey:kQUANTITY];
+    
+     NSString *qtyString = [[items valueForKey:kQUANTITY] stringValue];
+    
+    self.txtBurgerAmt.text = qtyString;
+    
+    [self updateTotalDisplay];
+    
+   }
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (IBAction)btnFries:(id)sender
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    
+    NSMutableDictionary *items = [self.currInvoice.shoppingCart valueForKey:kFRIES];
+	NSNumber *quantity = [items valueForKey:kQUANTITY];
+	[items
+     setObject:[NSDecimalNumber numberWithInt:[quantity intValue] + 1]
+     forKey:kQUANTITY];
+    
+     NSString *qtyString = [[items valueForKey:kQUANTITY] stringValue];
+    
+    self.txtFriesAmt.text = qtyString;
+    
+    [self updateTotalDisplay];
+    
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (IBAction)btnPie:(id)sender
 {
+    
+    NSMutableDictionary *items = [self.currInvoice.shoppingCart valueForKey:kPIES];
+	NSNumber *quantity = [items valueForKey:kQUANTITY];
+	[items
+     setObject:[NSDecimalNumber numberWithInt:[quantity intValue] + 1]
+     forKey:kQUANTITY];
+    
+     NSString *qtyString = [[items valueForKey:kQUANTITY] stringValue];
+    
+    self.txtShakesAmt.text = qtyString;
+    
+    [self updateTotalDisplay];
+    
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+- (IBAction)btnShake:(id)sender
 {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    
+    NSMutableDictionary *items = [self.currInvoice.shoppingCart valueForKey:kSHAKES];
+	NSNumber *quantity = [items valueForKey:kQUANTITY];
+	[items
+     setObject:[NSDecimalNumber numberWithInt:[quantity intValue] + 1]
+     forKey:kQUANTITY];
+    
+    NSString *qtyString = [[items valueForKey:kQUANTITY] stringValue];
+    
+    self.txtPiesAmt.text = qtyString;
+    
+    [self updateTotalDisplay];
+    
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UIAlertView *alertView =
+    [[UIAlertView alloc]
+     initWithTitle:title
+     message: message
+     delegate:self
+     cancelButtonTitle:@"OK"
+     otherButtonTitles:nil];
+    [alertView show];
 }
-*/
 
+- (double)getTotalAmount
+{
+    NSArray *itemList = @[kBURGERS, kFRIES, kSHAKES, kPIES];
+    
+	double total = 0;
+    
+	for (NSString *item in itemList) {
+		NSMutableDictionary *items = [self.currInvoice.shoppingCart valueForKey:item];
+        
+		total += ([[items valueForKey:kQUANTITY] intValue] * [[items valueForKey:kPRICE] doubleValue]);
+	}
+    
+	return total;
+}
+
+- (void)updateTotalDisplay
+{
+    double total = [self getTotalAmount];
+    NSString *test1 = [NSString stringWithFormat:@"%.2f", total];
+    
+    self.txtTotalAmount.text = test1;
+    
+}
 @end

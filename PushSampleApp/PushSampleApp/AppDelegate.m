@@ -6,19 +6,27 @@
 //  Copyright (c) 2014 Sample App. All rights reserved.
 //
 
-#import "PushAppDelegate.h"
+#import "AppDelegate.h"
+#import "Invoice.h"
+#import "InvoicesViewController.h"
 
-//TODO - Add global login bool
 
-@implementation PushAppDelegate
+
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //set the tab bar button colors
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.0/255.0 green:12.0/255.0 blue:250.0/255.0 alpha:1.0]];
     
-//    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-//    UINavigationController *navController = [tabBarController viewControllers][0];
+    self._invoices = [NSMutableArray arrayWithCapacity:30];
+    
+    Invoice *invoice = [[Invoice alloc] init];
+    invoice.transactionID = @"123";
+    invoice.status = @"Paid";
+    NSDecimalNumber *intermediateNumber = [[NSDecimalNumber alloc] initWithFloat:100.00];
+    invoice.totalAmount = intermediateNumber;
+    [self._invoices addObject:invoice];
     
     return YES;
 }
