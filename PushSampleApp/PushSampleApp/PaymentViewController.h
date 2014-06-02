@@ -12,5 +12,16 @@
 @interface PaymentViewController : UIViewController
 
 @property (nonatomic, weak) Invoice *invoiceToPay;
+@property (weak, nonatomic) IBOutlet UIImageView *imageStatus;
+@property (weak, nonatomic) IBOutlet UITextField *txtTotalAmount;
+@property (weak, nonatomic) IBOutlet UIButton *buttonSwipe;
+@property (weak, nonatomic) IBOutlet UIButton *buttonManual;
+@property (weak, nonatomic) IBOutlet UIButton *buttonRefund;
+@property (weak, nonatomic) IBOutlet UILabel *txtTotalLabel;
+- (IBAction)btnManualEntry:(id)sender;
+- (IBAction)btnSwipeEntry:(id)sender;
+- (IBAction)btnRefund:(id)sender;
+- (UIImage *)imageForStatus:(NSString*)status;
+
 
 @end

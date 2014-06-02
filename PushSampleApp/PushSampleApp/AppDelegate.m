@@ -22,9 +22,9 @@
     self._invoices = [NSMutableArray arrayWithCapacity:30];
     
     Invoice *invoice = [[Invoice alloc] init];
-    invoice.transactionID = @"123";
+    invoice.transactionID = @"123-555-667";
     invoice.status = @"Paid";
-    NSDecimalNumber *intermediateNumber = [[NSDecimalNumber alloc] initWithFloat:100.00];
+    NSDecimalNumber *intermediateNumber = [[NSDecimalNumber alloc] initWithFloat:100.50];
     invoice.totalAmount = intermediateNumber;
     [self._invoices addObject:invoice];
     

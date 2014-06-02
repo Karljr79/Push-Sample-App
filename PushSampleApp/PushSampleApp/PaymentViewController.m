@@ -7,6 +7,17 @@
 //
 
 #import "PaymentViewController.h"
+#import "SwipeViewController.h"
+#import "ManualViewController.h"
+
+#import <PayPalHereSDK/PayPalHereSDK.h>
+
+#define kBURGERS		@"Burgers"
+#define kFRIES          @"Fries"
+#define kSHAKES         @"Shakes"
+#define kPIES           @"Pies"
+#define kPRICE			@"Price"
+#define kQUANTITY		@"Quantity"
 
 @interface PaymentViewController ()
 
@@ -17,9 +28,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
     return self;
 }
 
@@ -27,7 +35,36 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSDecimalNumber *total = [NSDecimalNumber decimalNumberWithString:self.invoiceToPay.totalAmount.stringValue];
+    self.txtTotalAmount.text = total.stringValue;
+    self.imageStatus.image = [self imageForStatus:self.invoiceToPay.status];
+    
+    if ([self.invoiceToPay.status  isEqual: @"Paid"])
+    {
+        self.txtTotalLabel.text = @"Total Paid";
+        self.buttonManual.hidden = YES;
+        self.buttonSwipe.hidden = YES;
+        self.buttonRefund.hidden = NO;
+    }
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    
+    NSArray *itemList = @[kBURGERS, kFRIES, kSHAKES, kPIES];
+    
+    for (NSString *itemName in itemList)
+    {
+        NSMutableDictionary *items = [self.invoiceToPay.shoppingCart valueForKey:itemName];
+        NSDecimalNumber *quantity = [items valueForKey:kQUANTITY];
+        NSDecimalNumber *costEach = [items valueForKey:kPRICE];
+        
+        [tm.currentInvoice addItemWithId:itemName name:itemName quantity:quantity unitPrice:costEach taxRate:nil taxRateName:nil];
+    }
+
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -35,15 +72,32 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)btnManualEntry:(id)sender {
+    ManualViewController *manualVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ManualVC"];
+    manualVC.amountToPay = self.invoiceToPay.totalAmount;
+    [self.navigationController pushViewController:manualVC animated:YES];
 }
-*/
+
+- (IBAction)btnSwipeEntry:(id)sender {
+    SwipeViewController *swipeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SwipeVC"];
+    swipeVC.amountToPay = self.invoiceToPay.totalAmount;
+    [self.navigationController pushViewController:swipeVC animated:YES];
+}
+
+- (IBAction)btnRefund:(id)sender {
+}
+
+- (UIImage *)imageForStatus:(NSString*)status
+{
+    if ([status isEqualToString:@"Paid"]){
+        return [UIImage imageNamed:@"Paid"];
+    }
+    else if ([status isEqualToString:@"UnPaid"]){
+        return [UIImage imageNamed:@"UnPaid"];
+    }
+    return nil;
+}
+
+
 
 @end
