@@ -3,7 +3,7 @@
 //  PushSampleApp
 //
 //  Created by Hirschhorn Jr, Karl on 5/30/14.
-//  Copyright (c) 2014 OtherLevels. All rights reserved.
+//  Copyright (c) 2014 PayPal. All rights reserved.
 //
 
 #import "InvoicesViewController.h"
@@ -72,8 +72,7 @@
     InvoiceCell *cell = (InvoiceCell *)[tableView dequeueReusableCellWithIdentifier:@"InvoiceCell"];
     
     Invoice *invoice = (self.invoices)[indexPath.row];
-    float invoiceAmount = invoice.totalAmount.floatValue;
-    cell.amountLabel.text = [NSString stringWithFormat:@"%.2f", invoiceAmount];
+    cell.amountLabel.text = invoice.getTotalString;
     cell.transactionIDLabel.text = invoice.transactionID;
     cell.statusImageView.image = [self imageForStatus:invoice.status];
 

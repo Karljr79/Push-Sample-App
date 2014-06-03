@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "AFNetworking.h"
 #import "AppDelegate.h"
+#import "InvoicesViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
 @interface LoginViewController ()
@@ -310,7 +311,7 @@
                            // Login complete!
                            // Time to show the sample app UI!
                            //
-                           [self transitionToTransactionViewController];
+                           [self transitionToInvoicesViewController];
                        }
                        
                        else {
@@ -390,25 +391,11 @@
 	NSLog(@"Attempting to login to Paypal as \"%@\" with ticket \"%@\"...", self.txtUserName.text, ticket);
 }
 
-/*
- * When done with the login process we'll call this method to enter the bulk of
- * the sample app.
- */
-- (void)transitionToTransactionViewController
+//If the login was successful, head to the Invoices screen
+- (void)transitionToInvoicesViewController
 {
-//	TransactionViewController *transactionVC = nil;
-//    
-//	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-//		transactionVC = [[TransactionViewController alloc]
-//                         initWithNibName:@"TransactionViewController_iPhone"
-//                         bundle:nil];
-//	}
-//	else {
-//        NSLog(@"stepping in ipad detection");
-//		transactionVC = [[TransactionViewController alloc]
-//                         initWithNibName:@"TransactionViewController_iPad"
-//                         bundle:nil];
-//	}
+//	InvoicesViewController *invoicesVC = nil;
+
 //    
 //    self.navigationController.viewControllers = @[transactionVC];
 }

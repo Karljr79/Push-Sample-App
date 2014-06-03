@@ -3,7 +3,7 @@
 //  PushSampleApp
 //
 //  Created by Hirschhorn Jr, Karl on 5/30/14.
-//  Copyright (c) 2014 OtherLevels. All rights reserved.
+//  Copyright (c) 2014 PayPal. All rights reserved.
 //
 
 #import "InvoiceDetailViewController.h"
@@ -51,6 +51,7 @@
 {
     [self.delegate invoiceDetailViewControllerDidCancel:self];
 }
+
 - (IBAction)done:(id)sender
 {
     if ([self getTotalAmount] > 0.00)
@@ -170,7 +171,7 @@
 - (void)updateTotalDisplay
 {
     double total = [self getTotalAmount];
-    NSString *test1 = [NSString stringWithFormat:@"%.2f", total];
+    NSString *test1 = [NSString stringWithFormat:@"$%.2f", total];
     
     self.txtTotalAmount.text = test1;
     

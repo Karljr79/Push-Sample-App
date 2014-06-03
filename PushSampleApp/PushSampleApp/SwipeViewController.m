@@ -3,7 +3,7 @@
 //  PushSampleApp
 //
 //  Created by Hirschhorn Jr, Karl on 6/2/14.
-//  Copyright (c) 2014 OtherLevels. All rights reserved.
+//  Copyright (c) 2014 PayPal. All rights reserved.
 //
 
 #import "SwipeViewController.h"

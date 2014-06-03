@@ -3,7 +3,7 @@
 //  PushSampleApp
 //
 //  Created by Hirschhorn Jr, Karl on 6/2/14.
-//  Copyright (c) 2014 OtherLevels. All rights reserved.
+//  Copyright (c) 2014 PayPal. All rights reserved.
 //
 
 #import "PaymentViewController.h"
@@ -35,10 +35,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSDecimalNumber *total = [NSDecimalNumber decimalNumberWithString:self.invoiceToPay.totalAmount.stringValue];
-    self.txtTotalAmount.text = total.stringValue;
+    self.txtTotalAmount.text = self.invoiceToPay.getTotalString;
     self.imageStatus.image = [self imageForStatus:self.invoiceToPay.status];
     
+    //set up page view, buttons, etc.
     if ([self.invoiceToPay.status  isEqual: @"Paid"])
     {
         self.txtTotalLabel.text = @"Total Paid";
@@ -48,6 +48,7 @@
     }
 }
 
+//add to the paypal invoice upon loading the page
 - (void)viewWillAppear:(BOOL)animated
 {
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
@@ -72,21 +73,33 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)btnManualEntry:(id)sender {
-    ManualViewController *manualVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ManualVC"];
-    manualVC.amountToPay = self.invoiceToPay.totalAmount;
-    [self.navigationController pushViewController:manualVC animated:YES];
+//take the user to the manual card entry page
+- (IBAction)btnManualEntry:(id)sender
+{
+//    ManualViewController *manualVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ManualVC"];
+//    manualVC.amountToPay = self.invoiceToPay.totalAmount;
+//    [self.navigationController pushViewController:manualVC animated:YES];
 }
 
-- (IBAction)btnSwipeEntry:(id)sender {
+//take the user to the PPH swiper payment page
+- (IBAction)btnSwipeEntry:(id)sender
+{
     SwipeViewController *swipeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SwipeVC"];
     swipeVC.amountToPay = self.invoiceToPay.totalAmount;
     [self.navigationController pushViewController:swipeVC animated:YES];
 }
 
-- (IBAction)btnRefund:(id)sender {
+//TODO Refund Page
+- (IBAction)btnRefund:(id)sender
+{
 }
 
+- (void)manualEntryViewControllerDidCancel:(ManualEntryViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//sets header image based on the current invoice's status
 - (UIImage *)imageForStatus:(NSString*)status
 {
     if ([status isEqualToString:@"Paid"]){
@@ -96,6 +109,19 @@
         return [UIImage imageNamed:@"UnPaid"];
     }
     return nil;
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ManualEntry"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        ManualEntryViewController *manualEntryViewController = [navigationController viewControllers][0];
+        manualEntryViewController.delegate = self;
+    }
 }
 
 

@@ -27,6 +27,6 @@
 - (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 - (void)dismissKeyboard;
 - (void)setActiveMerchantWithAccessTokenDict:(NSDictionary *)JSON;
-- (void)transitionToTransactionViewController;
+- (void)transitionToInvoicesViewController;
 
 @end

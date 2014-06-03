@@ -3,7 +3,7 @@
 //  PushSampleApp
 //
 //  Created by Hirschhorn Jr, Karl on 5/30/14.
-//  Copyright (c) 2014 OtherLevels. All rights reserved.
+//  Copyright (c) 2014 PayPal. All rights reserved.
 //
 
 #import "Invoice.h"
@@ -58,7 +58,19 @@
      nil];
     }
     return self;
+}
 
+//helper function to get the amount as a string with dollar sign appended
+-(NSString*)getTotalString
+{
+    NSNumberFormatter* nf = [[NSNumberFormatter alloc]init];
+    [nf setMinimumFractionDigits:2];
+    [nf setMaximumFractionDigits:2];
+   
+    //format string and add dollar sign
+    NSString *amtString = [NSString stringWithFormat:@"$%@",[nf stringFromNumber:self.totalAmount]];
+    
+    return amtString;
 }
 
 @end
