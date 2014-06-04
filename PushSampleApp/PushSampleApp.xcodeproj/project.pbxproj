@@ -38,6 +38,9 @@
 		1363F642193D2671002FD7D3 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1363F641193D2671002FD7D3 /* PaymentViewController.m */; };
 		1363F645193D2C74002FD7D3 /* Paid.png in Resources */ = {isa = PBXBuildFile; fileRef = 1363F643193D2C74002FD7D3 /* Paid.png */; };
 		1363F646193D2C74002FD7D3 /* Unpaid.png in Resources */ = {isa = PBXBuildFile; fileRef = 1363F644193D2C74002FD7D3 /* Unpaid.png */; };
+		13669AA7193E992200011C38 /* logoAmex.png in Resources */ = {isa = PBXBuildFile; fileRef = 13669AA4193E992200011C38 /* logoAmex.png */; };
+		13669AA8193E992200011C38 /* logoMC.png in Resources */ = {isa = PBXBuildFile; fileRef = 13669AA5193E992200011C38 /* logoMC.png */; };
+		13669AA9193E992200011C38 /* logoVisa.png in Resources */ = {isa = PBXBuildFile; fileRef = 13669AA6193E992200011C38 /* logoVisa.png */; };
 		13A4FEDC1936AE8A00A7C9FE /* PayPalHereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13A4FEDB1936AE8A00A7C9FE /* PayPalHereSDK.framework */; };
 		13EDD3C0193CD772009108C5 /* check.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 13EDD3BE193CD772009108C5 /* check.jpeg */; };
 		13EDD3C1193CD772009108C5 /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 13EDD3BF193CD772009108C5 /* cross.png */; };
@@ -122,6 +125,9 @@
 		1363F641193D2671002FD7D3 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		1363F643193D2C74002FD7D3 /* Paid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Paid.png; sourceTree = "<group>"; };
 		1363F644193D2C74002FD7D3 /* Unpaid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unpaid.png; sourceTree = "<group>"; };
+		13669AA4193E992200011C38 /* logoAmex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoAmex.png; sourceTree = "<group>"; };
+		13669AA5193E992200011C38 /* logoMC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoMC.png; sourceTree = "<group>"; };
+		13669AA6193E992200011C38 /* logoVisa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoVisa.png; sourceTree = "<group>"; };
 		13A4FEDB1936AE8A00A7C9FE /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = "../../ios-here-sdk-dist/SDK/Release/PayPalHereSDK.framework"; sourceTree = "<group>"; };
 		13EDD3BE193CD772009108C5 /* check.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = check.jpeg; sourceTree = "<group>"; };
 		13EDD3BF193CD772009108C5 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
@@ -323,6 +329,9 @@
 		BBBC27B518A5ACED008E940F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				13669AA4193E992200011C38 /* logoAmex.png */,
+				13669AA5193E992200011C38 /* logoMC.png */,
+				13669AA6193E992200011C38 /* logoVisa.png */,
 				1363F643193D2C74002FD7D3 /* Paid.png */,
 				1363F644193D2C74002FD7D3 /* Unpaid.png */,
 				13EDD3BE193CD772009108C5 /* check.jpeg */,
@@ -419,9 +428,12 @@
 				BBBC27BD18A5ACED008E940F /* bookmark-7.png in Resources */,
 				BBBC27BC18A5ACED008E940F /* bell-7.png in Resources */,
 				BB05E94A18A2AC4800F0D3CA /* Images.xcassets in Resources */,
+				13669AA7193E992200011C38 /* logoAmex.png in Resources */,
 				BB05E93C18A2AC4800F0D3CA /* InfoPlist.strings in Resources */,
+				13669AA8193E992200011C38 /* logoMC.png in Resources */,
 				BBBC27BF18A5ACED008E940F /* list-star-7.png in Resources */,
 				13EDD3C0193CD772009108C5 /* check.jpeg in Resources */,
+				13669AA9193E992200011C38 /* logoVisa.png in Resources */,
 				BBBC27C118A5ACED008E940F /* write-7.png in Resources */,
 				1363F645193D2C74002FD7D3 /* Paid.png in Resources */,
 				BB05E94518A2AC4800F0D3CA /* Main.storyboard in Resources */,

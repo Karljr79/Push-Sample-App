@@ -7,6 +7,9 @@
 //
 
 #import "ManualEntryViewController.h"
+#import <PayPalHereSDK/PayPalHereSDK.h>
+
+#define kTitle		@"Manual Payment"
 
 @interface ManualEntryViewController ()
 
@@ -27,11 +30,11 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    //set the delegate for the text field
+    [self.txtCCNumber setDelegate:self];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //make sure spinny is hidden
+    self.spinProcessing.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,74 +43,154 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
 - (IBAction)cancel:(id)sender
 {
+    //close this and return to payment screen
     [self.delegate manualEntryViewControllerDidCancel:self];
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+//this button handles packaging up entries and submitting for payment
+- (IBAction)btnPayment:(id)sender {
+    NSString *strCCNumber = self.txtCCNumber.text;
+    NSString *strCCExpMonth = self.txtCCMonth.text;
+    NSString *strCCExpYear = self.txtCCYear.text;
+    NSString *strCCCvv2 = self.txtCVV2.text;
     
-    // Configure the cell...
+    if(![self checkCCNumberValidity:strCCNumber])
+    {
+        [self showAlertWithTitle:kTitle andMessage:@"Card Number is Invalid"];
+    }
+    else if(![self checkExpDateWithMonth:strCCExpMonth andYear:strCCExpYear])
+    {
+        [self showAlertWithTitle:kTitle andMessage:@"Expiration Date is Invalid or Missing"];
+    }
+    else if(![self checkCVV2Validity:strCCCvv2])
+    {
+        [self showAlertWithTitle:kTitle andMessage:@"CVV2 in Invalid or Missing"];
+    }
+    else
+    {
+        //get the spinner going
+        self.spinProcessing.hidden = NO;
+        [self.spinProcessing startAnimating];
+        
+        //format the date usong NSDateComponents
+        NSDateComponents *expDateFormatter = [[NSDateComponents alloc] init];
+        [expDateFormatter setMonth:strCCExpMonth.integerValue];
+        [expDateFormatter setYear:strCCExpYear.integerValue];
+        
+        //enter cc details into PPHCardNot Present Data
+        PPHCardNotPresentData* pphCardData = [[PPHCardNotPresentData alloc] init];
+        pphCardData.cardNumber = strCCNumber;
+        pphCardData.cvv2 = strCCCvv2;
+        pphCardData.expirationDate = [[NSCalendar currentCalendar] dateFromComponents:expDateFormatter];
+        
+        
+    }
     
-    return cell;
+    
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    UIAlertView *alertView =
+    [[UIAlertView alloc]
+     initWithTitle:title
+     message: message
+     delegate:self
+     cancelButtonTitle:@"OK"
+     otherButtonTitles:nil];
+    [alertView show];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+-(BOOL)checkCCNumberValidity:(NSString *)cardNumber
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    if(cardNumber == nil || cardNumber.length < 15)
+    {
+        return FALSE;
+    }
+    else
+    {
+        return TRUE;
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+-(BOOL)checkCVV2Validity:(NSString *)cvv2
 {
+    if(cvv2 == nil || cvv2.length < 3)
+    {
+        return FALSE;
+    }
+    else
+    {
+        return TRUE;
+    }
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+-(BOOL)checkExpDateWithMonth:(NSString *)expMonth andYear:(NSString *)expYear
 {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    if(expMonth == nil || expYear == nil)
+    {
+        return FALSE;
+    }
+    else if(2 != expMonth.length || 4 != expYear.length)
+    {
+        return FALSE;
+    }
+    else if(12 < expMonth.integerValue || ([self getCurrentYear].integerValue > expYear.integerValue))
+    {
+        return FALSE;
+    }
+    else
+    {
+        return TRUE;
+    }
 }
-*/
+
+-(void)imageForCardType
+{
+    PPHCardNotPresentData* pphCardData = [[PPHCardNotPresentData alloc] init];
+    pphCardData.cardNumber = self.txtCCNumber.text;
+    
+    //log the type of card entered
+    NSLog(@"Type of Card %i", [pphCardData cardType]);
+    
+    if([pphCardData cardType] == 1)
+    {
+        self.imgCardType.image = [UIImage imageNamed:@"logoVisa"];
+    }
+    else if([pphCardData cardType] == 2)
+    {
+        self.imgCardType.image = [UIImage imageNamed:@"logoMC"];
+    }
+    else if([pphCardData cardType] == 4)
+    {
+        self.imgCardType.image = [UIImage imageNamed:@"logoAmex"];
+    }
+    else
+    {
+        return;
+    }
+}
+
+-(NSString*) getCurrentYear
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    NSString *yearString = [formatter stringFromDate:[NSDate date]];
+    return yearString;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    //close keyboard
+	[textField resignFirstResponder];
+    
+    //set image
+    [self imageForCardType];
+    
+	return YES;
+    
+}
 
 @end
