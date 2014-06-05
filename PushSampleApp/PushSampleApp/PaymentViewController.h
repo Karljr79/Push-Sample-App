@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Invoice.h"
 #import "ManualEntryViewController.h"
+#import "SwipeEntryViewController.h"
 
-@interface PaymentViewController : UIViewController <ManualEntryViewControllerDelegate>;
+@interface PaymentViewController : UIViewController <ManualEntryViewControllerDelegate, SwipeEntryViewControllerDelegate>;
 
-@property (nonatomic, weak) Invoice *invoiceToPay;
+@property (strong, nonatomic) Invoice *invoiceToPay;
+@property (weak, nonatomic) NSNumber *invoiceID;
 @property (weak, nonatomic) IBOutlet UIImageView *imageStatus;
 @property (weak, nonatomic) IBOutlet UITextField *txtTotalAmount;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSwipe;
@@ -20,8 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonRefund;
 @property (weak, nonatomic) IBOutlet UILabel *txtTotalLabel;
 
-- (IBAction)btnManualEntry:(id)sender;
-- (IBAction)btnSwipeEntry:(id)sender;
 - (IBAction)btnRefund:(id)sender;
 - (UIImage *)imageForStatus:(NSString*)status;
 

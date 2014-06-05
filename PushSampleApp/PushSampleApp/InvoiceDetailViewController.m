@@ -41,6 +41,16 @@
     // self.clearsSelectionOnViewWillAppear = NO;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ([PayPalHereSDK activeMerchant] == nil)
+    {
+        [self showAlertWithTitle:@"No Merchant" andMessage:@"Please login before using this page"];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -118,7 +128,7 @@
     
      NSString *qtyString = [[items valueForKey:kQUANTITY] stringValue];
     
-    self.txtShakesAmt.text = qtyString;
+    self.txtPiesAmt.text = qtyString;
     
     [self updateTotalDisplay];
     
@@ -135,7 +145,7 @@
     
     NSString *qtyString = [[items valueForKey:kQUANTITY] stringValue];
     
-    self.txtPiesAmt.text = qtyString;
+    self.txtShakesAmt.text = qtyString;
     
     [self updateTotalDisplay];
     

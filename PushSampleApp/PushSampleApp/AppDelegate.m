@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Invoice.h"
 #import "InvoicesViewController.h"
+#import <PayPalHereSDK/PayPalHereSDK.h>
 
 
 
@@ -27,6 +28,13 @@
     NSDecimalNumber *intermediateNumber = [[NSDecimalNumber alloc] initWithFloat:100.50];
     invoice.totalAmount = intermediateNumber;
     [self._invoices addObject:invoice];
+    
+    //Set BN Code
+    [PayPalHereSDK setReferrerCode:@"Karl's Sample"];
+    
+    // Either the app, or the SDK must requrest location access if we'd like
+    // the SDK to take payments.
+    [PayPalHereSDK askForLocationAccess];
     
     return YES;
 }
@@ -127,6 +135,34 @@
         //Add handlers here for empty user info if necessary
     }
     
+}
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+	if ([url.host isEqualToString:@"oauth"]) {
+        
+		NSMutableDictionary *query = [[NSMutableDictionary alloc] init];
+		for (NSString *keyValuePair in [url.query componentsSeparatedByString:@"&"]) {
+			NSArray *pair = [keyValuePair componentsSeparatedByString:@"="];
+			if (!(pair && [pair count] == 2)) continue;
+            NSString *escapedData = [pair objectAtIndex:1];
+            escapedData = [escapedData stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+			[query setObject:escapedData forKey:[pair objectAtIndex:0]];
+		}
+        
+		if ([query objectForKey:@"access_token"] &&
+			[query objectForKey:@"expires_in"] &&
+			[query objectForKey:@"refresh_url"] &&
+			[self.viewController isKindOfClass:[LoginViewController class]]) {
+			[self.viewController setActiveMerchantWithAccessTokenDict:query];
+		}
+        
+	}
+	else {
+		NSLog(@"%s url.host is NOT \"oauth\" so we're leaving without doing anything!", __FUNCTION__);
+	}
+    
+	return YES;
 }
 
 @end

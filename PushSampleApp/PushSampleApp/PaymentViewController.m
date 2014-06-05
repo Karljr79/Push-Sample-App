@@ -73,30 +73,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-//take the user to the manual card entry page
-- (IBAction)btnManualEntry:(id)sender
-{
-//    ManualViewController *manualVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ManualVC"];
-//    manualVC.amountToPay = self.invoiceToPay.totalAmount;
-//    [self.navigationController pushViewController:manualVC animated:YES];
-}
-
-//take the user to the PPH swiper payment page
-- (IBAction)btnSwipeEntry:(id)sender
-{
-    SwipeViewController *swipeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SwipeVC"];
-    swipeVC.amountToPay = self.invoiceToPay.totalAmount;
-    [self.navigationController pushViewController:swipeVC animated:YES];
-}
-
 //TODO Refund Page
 - (IBAction)btnRefund:(id)sender
 {
-}
-
-- (void)manualEntryViewControllerDidCancel:(ManualEntryViewController *)controller
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //sets header image based on the current invoice's status
@@ -120,8 +99,30 @@
         
         UINavigationController *navigationController = segue.destinationViewController;
         ManualEntryViewController *manualEntryViewController = [navigationController viewControllers][0];
+        manualEntryViewController.invoiceID = self.invoiceID;
         manualEntryViewController.delegate = self;
     }
+    else if ([segue.identifier isEqualToString:@"SwipeEntry"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        SwipeEntryViewController *swipeEntryViewController = [navigationController viewControllers][0];
+        swipeEntryViewController.invoiceID = self.invoiceID;
+        swipeEntryViewController.delegate = self;
+    }
+}
+
+#pragma mark - ManualEntryViewControllerDelegate
+
+- (void)manualEntryViewControllerDidCancel:(ManualEntryViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - SwipeEntryViewControllerDelegate
+
+- (void)swipeEntryViewControllerDidCancel:(SwipeEntryViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

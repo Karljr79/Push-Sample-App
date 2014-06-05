@@ -30,6 +30,8 @@
 		13028C421937C3C300F4B5E4 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 13028C371937C3C300F4B5E4 /* AFURLConnectionOperation.m */; };
 		13028C431937C3C300F4B5E4 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 13028C391937C3C300F4B5E4 /* AFXMLRequestOperation.m */; };
 		13028C441937C3C300F4B5E4 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 13028C3B1937C3C300F4B5E4 /* UIImageView+AFNetworking.m */; };
+		1333DDE9193F853100420FA6 /* PaymentStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333DDE8193F853100420FA6 /* PaymentStatusViewController.m */; };
+		1333DDEC193FC4C600420FA6 /* SwipeEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333DDEB193FC4C600420FA6 /* SwipeEntryViewController.m */; };
 		133C020A193E47B900767F87 /* ManualEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133C0209193E47B900767F87 /* ManualEntryViewController.m */; };
 		133FB29C19393C400022C1E9 /* InvoicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FB29B19393C400022C1E9 /* InvoicesViewController.m */; };
 		133FB29F19393CEB0022C1E9 /* Invoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FB29E19393CEB0022C1E9 /* Invoice.m */; };
@@ -111,6 +113,10 @@
 		13028C391937C3C300F4B5E4 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		13028C3A1937C3C300F4B5E4 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		13028C3B1937C3C300F4B5E4 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		1333DDE7193F853100420FA6 /* PaymentStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentStatusViewController.h; sourceTree = "<group>"; };
+		1333DDE8193F853100420FA6 /* PaymentStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentStatusViewController.m; sourceTree = "<group>"; };
+		1333DDEA193FC4C600420FA6 /* SwipeEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeEntryViewController.h; sourceTree = "<group>"; };
+		1333DDEB193FC4C600420FA6 /* SwipeEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeEntryViewController.m; sourceTree = "<group>"; };
 		133C0208193E47B900767F87 /* ManualEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryViewController.h; sourceTree = "<group>"; };
 		133C0209193E47B900767F87 /* ManualEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryViewController.m; sourceTree = "<group>"; };
 		133FB29A19393C400022C1E9 /* InvoicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvoicesViewController.h; sourceTree = "<group>"; };
@@ -308,8 +314,12 @@
 				133C0209193E47B900767F87 /* ManualEntryViewController.m */,
 				1363F640193D2671002FD7D3 /* PaymentViewController.h */,
 				1363F641193D2671002FD7D3 /* PaymentViewController.m */,
+				1333DDE7193F853100420FA6 /* PaymentStatusViewController.h */,
+				1333DDE8193F853100420FA6 /* PaymentStatusViewController.m */,
 				13F10195193D45E300D3E7BA /* SetAmountViewController.h */,
 				13F10196193D45E300D3E7BA /* SetAmountViewController.m */,
+				1333DDEA193FC4C600420FA6 /* SwipeEntryViewController.h */,
+				1333DDEB193FC4C600420FA6 /* SwipeEntryViewController.m */,
 				BB05E93818A2AC4800F0D3CA /* Supporting Files */,
 			);
 			path = PushSampleApp;
@@ -459,6 +469,7 @@
 				133FB29F19393CEB0022C1E9 /* Invoice.m in Sources */,
 				1363F642193D2671002FD7D3 /* PaymentViewController.m in Sources */,
 				13028C0D1937AC9900F4B5E4 /* PPSCryptoUtils.m in Sources */,
+				1333DDE9193F853100420FA6 /* PaymentStatusViewController.m in Sources */,
 				BB05E93E18A2AC4800F0D3CA /* main.m in Sources */,
 				13028C0E1937AC9900F4B5E4 /* PPSPreferences.m in Sources */,
 				13028C3F1937C3C300F4B5E4 /* AFJSONRequestOperation.m in Sources */,
@@ -467,6 +478,7 @@
 				133FB2A2193945130022C1E9 /* InvoiceCell.m in Sources */,
 				BB05E94218A2AC4800F0D3CA /* AppDelegate.m in Sources */,
 				13028C3C1937C3C300F4B5E4 /* AFHTTPClient.m in Sources */,
+				1333DDEC193FC4C600420FA6 /* SwipeEntryViewController.m in Sources */,
 				13028C411937C3C300F4B5E4 /* AFPropertyListRequestOperation.m in Sources */,
 				BB05E94818A2AC4800F0D3CA /* AboutViewController.m in Sources */,
 				133FB29C19393C400022C1E9 /* InvoicesViewController.m in Sources */,

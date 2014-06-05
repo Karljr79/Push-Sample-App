@@ -31,8 +31,6 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     id propertyValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
     self.invoices = propertyValue;
     
@@ -73,7 +71,17 @@
     
     Invoice *invoice = (self.invoices)[indexPath.row];
     cell.amountLabel.text = invoice.getTotalString;
-    cell.transactionIDLabel.text = invoice.transactionID;
+    
+    //TODO remove this if statement once live
+    if(invoice.transactionRecord != nil)
+    {
+        cell.transactionIDLabel.text = invoice.transactionRecord.transactionId;
+    }
+    else
+    {
+        cell.transactionIDLabel.text = invoice.transactionID;
+    }
+    
     cell.statusImageView.image = [self imageForStatus:invoice.status];
 
     return cell;
@@ -126,9 +134,9 @@
     id allInvoices = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
     PaymentViewController *paymentVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentVC"];
     paymentVC.invoiceToPay = [allInvoices objectAtIndex:indexPath.row];
+    paymentVC.invoiceID = [NSNumber numberWithInt:indexPath.row];
     [self.navigationController pushViewController:paymentVC animated:YES];
 }
-
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

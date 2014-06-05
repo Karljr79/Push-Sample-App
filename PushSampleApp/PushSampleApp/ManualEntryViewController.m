@@ -7,11 +7,16 @@
 //
 
 #import "ManualEntryViewController.h"
+#import "PaymentStatusViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
+#import <PayPalHereSDK/PPHTransactionManager.h>
+#import <PayPalHereSDK/PPHTransactionRecord.h>
 
 #define kTitle		@"Manual Payment"
 
 @interface ManualEntryViewController ()
+
+@property (strong, nonatomic)PPHTransactionResponse *transactionResponse;
 
 @end
 
@@ -30,8 +35,11 @@
 {
     [super viewDidLoad];
     
-    //set the delegate for the text field
+    //set the delegates for the text fields
     [self.txtCCNumber setDelegate:self];
+    [self.txtCCYear setDelegate:self];
+    [self.txtCCMonth setDelegate:self];
+    [self.txtCVV2 setDelegate:self];
     
     //make sure spinny is hidden
     self.spinProcessing.hidden = YES;
@@ -56,6 +64,7 @@
     NSString *strCCExpYear = self.txtCCYear.text;
     NSString *strCCCvv2 = self.txtCVV2.text;
     
+    //Do prelim checks for credit card validity
     if(![self checkCCNumberValidity:strCCNumber])
     {
         [self showAlertWithTitle:kTitle andMessage:@"Card Number is Invalid"];
@@ -85,10 +94,34 @@
         pphCardData.cvv2 = strCCCvv2;
         pphCardData.expirationDate = [[NSCalendar currentCalendar] dateFromComponents:expDateFormatter];
         
+        //take the payment
+        PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+        
+        tm.manualEntryOrScannedCardData = pphCardData;
+        
+        [tm processPaymentWithPaymentType:ePPHPaymentMethodKey withTransactionController:self completionHandler:^(PPHTransactionResponse *record) {
+            self.transactionResponse = record;
+            [self completeTransaction];
+        }];
         
     }
     
     
+}
+
+-(void)completeTransaction
+{
+    //complete transaction and sync up data
+    if(_transactionResponse.record != nil) {
+        //NSString *myResponse = _transactionResponse.record.transactionId;
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        Invoice *myInvoice = [appDelegate._invoices objectAtIndex:self.invoiceID.integerValue];
+        myInvoice.transactionRecord = _transactionResponse.record;
+        
+        PaymentStatusViewController *paymentVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentStatusVC"];
+        paymentVC.transactionResponse = _transactionResponse;
+        paymentVC.invoiceID = self.invoiceID;
+    }
 }
 
 -(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
@@ -155,6 +188,7 @@
     //log the type of card entered
     NSLog(@"Type of Card %i", [pphCardData cardType]);
     
+    //TODO Add Others
     if([pphCardData cardType] == 1)
     {
         self.imgCardType.image = [UIImage imageNamed:@"logoVisa"];
@@ -190,7 +224,18 @@
     [self imageForCardType];
     
 	return YES;
-    
+}
+
+#pragma mark PPHTransactionControllerDelegate
+-(PPHTransactionControlActionType)onPreAuthorizeForInvoice:(PPHInvoice *)inv withPreAuthJSON:(NSString*) preAuthJSON
+{
+    NSLog(@"TransactionViewController: onPreAuthorizeForInvoice called");
+    return ePPHTransactionType_Continue;
+}
+
+-(void)onPostAuthorize:(BOOL)didFail
+{
+    NSLog(@"TransactionViewController: onPostAuthorize called.  'authorize' %@ fail", didFail ? @"DID" : @"DID NOT");
 }
 
 @end

@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <PayPalHereSDK/PPHTransactionManager.h>
+#import <PayPalHereSDK/PPHTransactionRecord.h>
 
 @interface Invoice : NSObject
 
 @property (nonatomic, copy) NSDecimalNumber *totalAmount;
 @property (nonatomic, assign) NSString *status;
-@property (nonatomic, copy) NSString *transactionID;
+@property (nonatomic, copy) NSString *transactionID; //TODO get rid of me in favor of PPH class
 @property (nonatomic, copy) NSMutableDictionary *shoppingCart;
+@property (nonatomic, copy) PPHTransactionRecord *transactionRecord;
 
 -(NSString*)getTotalString;
 

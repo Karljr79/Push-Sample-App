@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <PayPalHereSDK/PPHLocation.h>
+#import "LoginViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) NSMutableArray *_invoices;
+@property (strong, nonatomic) LoginViewController *viewController;
 
 @end
