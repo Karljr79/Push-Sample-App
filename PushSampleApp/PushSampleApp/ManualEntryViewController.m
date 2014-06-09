@@ -8,6 +8,7 @@
 
 #import "ManualEntryViewController.h"
 #import "PaymentStatusViewController.h"
+#import "AppDelegate.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
@@ -113,15 +114,16 @@
 {
     //complete transaction and sync up data
     if(_transactionResponse.record != nil) {
-        //NSString *myResponse = _transactionResponse.record.transactionId;
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        Invoice *myInvoice = [appDelegate._invoices objectAtIndex:self.invoiceID.integerValue];
-        myInvoice.transactionRecord = _transactionResponse.record;
         
-        PaymentStatusViewController *paymentVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentStatusVC"];
-        paymentVC.transactionResponse = _transactionResponse;
-        paymentVC.invoiceID = self.invoiceID;
+        // Add the record into an array so that we can issue a refund later.
+        [appDelegate.transactionRecords addObject:_transactionResponse.record];
     }
+    
+    [self showAlertWithTitle:@"Payment" andMessage:@"Payment Complete, press the done button"];
+    
+    [[self.navigationItem rightBarButtonItem] setEnabled:YES];
+    
 }
 
 -(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
@@ -236,6 +238,17 @@
 -(void)onPostAuthorize:(BOOL)didFail
 {
     NSLog(@"TransactionViewController: onPostAuthorize called.  'authorize' %@ fail", didFail ? @"DID" : @"DID NOT");
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UINavigationController *navigationController = segue.destinationViewController;
+    PaymentStatusViewController *paymentVC = [navigationController viewControllers][0];
+    paymentVC.transactionResponse = self.transactionResponse;
+    paymentVC.invoiceID = self.invoiceID;
 }
 
 @end

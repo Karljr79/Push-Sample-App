@@ -31,8 +31,7 @@
 {
     [super viewDidLoad];
     
-    id propertyValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
-    self.invoices = propertyValue;
+
     
     //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -41,7 +40,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     id propertyValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
+    id transactionRecords = [(AppDelegate *)[[UIApplication sharedApplication] delegate] transactionRecords];
     self.invoices = propertyValue;
+    self.transactionRecords = transactionRecords;
     
     [self.tableView reloadData];
 }
@@ -70,17 +71,14 @@
     InvoiceCell *cell = (InvoiceCell *)[tableView dequeueReusableCellWithIdentifier:@"InvoiceCell"];
     
     Invoice *invoice = (self.invoices)[indexPath.row];
+    //PPHTransactionRecord *record = (self.transactionRecords)[indexPath.row];
     cell.amountLabel.text = invoice.getTotalString;
+    cell.transactionIDLabel.text = invoice.transactionID;
     
-    //TODO remove this if statement once live
-    if(invoice.transactionRecord != nil)
-    {
-        cell.transactionIDLabel.text = invoice.transactionRecord.transactionId;
-    }
-    else
-    {
-        cell.transactionIDLabel.text = invoice.transactionID;
-    }
+//    if (record != nil)
+//    {
+//        cell.transactionIDLabel.text = record.transactionId;
+//    }
     
     cell.statusImageView.image = [self imageForStatus:invoice.status];
 

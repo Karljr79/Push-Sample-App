@@ -19,5 +19,6 @@
 @property (nonatomic, copy) PPHTransactionRecord *transactionRecord;
 
 -(NSString*)getTotalString;
+-(void)updateInvoiceWithTransactionRecord:(PPHTransactionRecord *)record;
 
 @end

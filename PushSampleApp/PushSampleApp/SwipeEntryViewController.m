@@ -8,6 +8,7 @@
 
 #import "SwipeEntryViewController.h"
 #import "PaymentStatusViewController.h"
+#import "AppDelegate.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
@@ -20,6 +21,7 @@
 @interface SwipeEntryViewController ()
 
 @property (nonatomic,strong) PPHTransactionWatcher *transactionWatcher;
+@property (nonatomic,strong) PPHCardReaderWatcher *cardWatcher;
 @property BOOL waitingForCardSwipe;
 @property BOOL doneWithPayScreen;
 @property BOOL isCashTransaction;
@@ -50,6 +52,7 @@
     [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
     
     self.transactionWatcher = [[PPHTransactionWatcher alloc] initWithDelegate:self];
+    self.cardWatcher = [[PPHCardReaderWatcher alloc] initWithSimpleDelegate:self];
     self.waitingForCardSwipe = YES;
     self.doneWithPayScreen = NO;
     self.isCashTransaction = NO;
@@ -84,9 +87,9 @@
         Invoice *myInvoice = [appDelegate._invoices objectAtIndex:self.invoiceID.integerValue];
         myInvoice.transactionRecord = _transactionResponse.record;
         
-        PaymentStatusViewController *paymentVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentStatusVC"];
-        paymentVC.transactionResponse = _transactionResponse;
-        paymentVC.invoiceID = self.invoiceID;
+//        PaymentStatusViewController *paymentVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentStatusVC"];
+//        paymentVC.transactionResponse = _transactionResponse;
+//        paymentVC.invoiceID = self.invoiceID;
     }
 }
 
@@ -124,8 +127,10 @@
 -(void)didRemoveReader:(PPHReaderType)readerType
 {
     NSLog(@"Reader Removed");
-    self.spinReader.hidden = YES;
-    [self.spinReader stopAnimating];
+    self.spinReader.hidden = NO;
+    [self.spinReader startAnimating];
+    
+    self.txtReaderStatus.text = kStatusWaiting;
 }
 
 -(void)didCompleteCardSwipe:(PPHCardSwipeData*)card
@@ -195,5 +200,13 @@
     }
 }
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UINavigationController *navigationController = segue.destinationViewController;
+    PaymentStatusViewController *paymentVC = [navigationController viewControllers][0];
+    paymentVC.transactionResponse = self.transactionResponse;
+    paymentVC.invoiceID = self.invoiceID;
+}
 
 @end

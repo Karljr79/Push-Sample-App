@@ -73,4 +73,10 @@
     return amtString;
 }
 
+-(void)updateInvoiceWithTransactionRecord:(PPHTransactionRecord *)record
+{
+    self.transactionRecord = record;
+    self.transactionID = record.transactionId;
+}
+
 @end

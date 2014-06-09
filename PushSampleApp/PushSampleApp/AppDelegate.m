@@ -11,7 +11,11 @@
 #import "InvoicesViewController.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
+@interface AppDelegate() <PPHLoggingDelegate>
 
+@property (nonatomic,strong) id<PPHLoggingDelegate> sdkLogger;
+
+@end
 
 @implementation AppDelegate
 
@@ -21,13 +25,10 @@
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.0/255.0 green:12.0/255.0 blue:250.0/255.0 alpha:1.0]];
     
     self._invoices = [NSMutableArray arrayWithCapacity:30];
+    self.transactionRecords = [NSMutableArray arrayWithCapacity:30];
     
-    Invoice *invoice = [[Invoice alloc] init];
-    invoice.transactionID = @"123-555-667";
-    invoice.status = @"Paid";
-    NSDecimalNumber *intermediateNumber = [[NSDecimalNumber alloc] initWithFloat:100.50];
-    invoice.totalAmount = intermediateNumber;
-    [self._invoices addObject:invoice];
+    self.sdkLogger = [PayPalHereSDK loggingDelegate];
+    [PayPalHereSDK setLoggingDelegate:self];
     
     //Set BN Code
     [PayPalHereSDK setReferrerCode:@"Karl's Sample"];
@@ -163,6 +164,36 @@
 	}
     
 	return YES;
+}
+
+-(void)addInvoice:(Invoice*)invoiceToAdd
+{
+    [self._invoices addObject:invoiceToAdd];
+}
+
+// Let's intercept the logging messages of the SDK
+// and display them so we can see what's happening.
+//
+#pragma mark PPHLoggingDelegate methods
+-(void)logPayPalHereInfo:(NSString *)message {
+    NSLog(@"%@", message);
+}
+
+-(void)logPayPalHereError:(NSString *)message {
+    NSLog(@"%@", message);
+    [self.sdkLogger logPayPalHereError: message];
+}
+
+-(void)logPayPalHereWarning:(NSString *)message {
+    NSLog(@"%@", message);
+}
+
+-(void)logPayPalHereDebug:(NSString *)message {
+    NSLog(@"Debug: %@", message);
+}
+
+-(void)logPayPalHereHardwareInfo:(NSString *)message {
+    NSLog(@"Debug: %@", message);
 }
 
 @end

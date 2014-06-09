@@ -53,6 +53,8 @@
 {
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
     
+    [tm beginPayment];
+    
     NSArray *itemList = @[kBURGERS, kFRIES, kSHAKES, kPIES];
     
     for (NSString *itemName in itemList)
@@ -85,7 +87,7 @@
         return [UIImage imageNamed:@"Paid"];
     }
     else if ([status isEqualToString:@"UnPaid"]){
-        return [UIImage imageNamed:@"UnPaid"];
+        return [UIImage imageNamed:@"Unpaid"];
     }
     return nil;
 }

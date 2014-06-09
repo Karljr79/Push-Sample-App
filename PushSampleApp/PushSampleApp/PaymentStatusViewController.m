@@ -18,6 +18,9 @@
 
 @implementation PaymentStatusViewController
 
+@synthesize transactionResponse;
+@synthesize invoiceID;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -30,17 +33,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    
+    [self.navigationItem setHidesBackButton:YES];
     
     UIColor *clrGreen = [UIColor colorWithRed:0/255.0 green:255.0/255.0 blue:0.0/255.0 alpha:1.0];
     UIColor *clrRed = [UIColor colorWithRed:255.0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0];
     
     //Handle displaying the status
-    if(_transactionResponse.error == nil) {
+    if(self.transactionResponse.error == nil) {
         
         //set Actual status text
         self.txtActualStatus.text = @"Payment Successful";
@@ -50,22 +50,30 @@
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         Invoice *myInvoice = [appDelegate._invoices objectAtIndex:self.invoiceID.integerValue];
         myInvoice.status = @"Paid";
+        myInvoice.transactionID = self.transactionResponse.record.transactionId;
         
         
-        if(_transactionResponse.record.transactionId != nil)
+        
+        if(self.transactionResponse.record.transactionId != nil)
         {
-            self.txtStatusDetail.text = [NSString stringWithFormat: @"Transaction Id: %@", _transactionResponse.record.transactionId];
+            self.txtStatusDetail.text = [NSString stringWithFormat: @"Transaction Id: %@", self.transactionResponse.record.transactionId];
         } else
         {
-            self.txtStatusDetail.text = [NSString stringWithFormat: @"Invoice Id: %@", _transactionResponse.record.payPalInvoiceId];
+            self.txtStatusDetail.text = [NSString stringWithFormat: @"Invoice Id: %@", self.transactionResponse.record.payPalInvoiceId];
         }
     }
     else
     {
         self.txtActualStatus.textColor = clrRed;
         self.txtActualStatus.text = @"Payment Declined";
-        self.txtStatusDetail.text = [NSString stringWithFormat: @"Error: %@", _transactionResponse.error.description];
+        self.txtStatusDetail.text = [NSString stringWithFormat: @"Error: %@", self.transactionResponse.error.description];
     }
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -111,7 +119,7 @@
     
     destination.isEmail = isEmail;
     
-    [tm sendReceipt:_transactionResponse.record toRecipient:destination completionHandler:^(PPHError *error) {
+    [tm sendReceipt:self.transactionResponse.record toRecipient:destination completionHandler:^(PPHError *error) {
         if(error == nil) {
             [self showAlertWithTitle:@"Receipt Sent" andMessage:@"Please wait to receive the receipt on your device."];
         } else {
@@ -142,4 +150,5 @@
      otherButtonTitles:nil];
     [alertView show];
 }
+
 @end

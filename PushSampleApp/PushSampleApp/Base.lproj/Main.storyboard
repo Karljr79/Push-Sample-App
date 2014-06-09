@@ -700,6 +700,11 @@
                                 <action selector="cancel:" destination="cv6-9w-M2b" id="f8D-b2-hsl"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="pMn-qk-6Ar">
+                            <connections>
+                                <segue destination="DVn-hm-SJI" kind="modal" identifier="ManStatusSegue" id="nIw-Uo-cOT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imgCardType" destination="0Rp-o7-cQ4" id="AeF-5x-DQL"/>
@@ -717,13 +722,14 @@
         <!--Payment Status View Controller - Payment Status-->
         <scene sceneID="GV6-vt-f1R">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhQ-dd-gTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="PaymentStatusVC" id="R54-jX-0e7" customClass="PaymentStatusViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="69S-2j-I9S">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="Section-1" id="sYc-FV-0zL">
+                            <tableViewSection headerTitle="Status" id="sYc-FV-0zL">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="42" id="6aT-v4-mAD">
                                         <rect key="frame" x="0.0" y="86" width="320" height="42"/>
@@ -732,10 +738,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c89-1y-zCf">
-                                                    <rect key="frame" x="20" y="0.0" width="280" height="40"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQr-gd-tjj">
+                                                    <rect key="frame" x="20" y="0.0" width="280" height="41"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -824,34 +830,54 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Return Home" id="KQW-CT-7sO">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ydn-l6-JMZ">
+                                        <rect key="frame" x="0.0" y="338" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ydn-l6-JMZ" id="fPB-wy-KI7">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCG-99-dNB">
+                                                    <rect key="frame" x="97" y="7" width="127" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.31656807549999999" green="0.40420240089999998" blue="0.59410873720000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="Done">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="N8e-FW-ElW" kind="modal" id="dYT-V5-dza"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="R54-jX-0e7" id="aLY-J5-8z1"/>
                             <outlet property="delegate" destination="R54-jX-0e7" id="paz-J4-D4j"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Payment Status" id="NnZ-gM-cPU">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="qCJ-6Z-PfG">
-                            <connections>
-                                <segue destination="N8e-FW-ElW" kind="modal" id="2NF-BX-NDv"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Payment Status" id="NnZ-gM-cPU"/>
                     <connections>
-                        <outlet property="txtActualStatus" destination="c89-1y-zCf" id="yqa-6j-s8G"/>
+                        <outlet property="txtActualStatus" destination="dQr-gd-tjj" id="LB9-HK-qti"/>
                         <outlet property="txtEmail" destination="yae-eT-kF0" id="WEI-WI-oJN"/>
                         <outlet property="txtPhoneNumber" destination="btG-hg-mSA" id="pXd-Bf-Cbw"/>
                         <outlet property="txtStatusDetail" destination="y2c-b0-Ukg" id="8qI-ur-Vr5"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qhQ-dd-gTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3983" y="1295"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - myNav-->
         <scene sceneID="ddq-hu-8N7">
             <objects>
-                <navigationController storyboardIdentifier="PaymentStatusNC" definesPresentationContext="YES" id="DVn-hm-SJI" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YiI-hR-2Ms" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="PaymentStatusNC" title="myNav" definesPresentationContext="YES" id="DVn-hm-SJI" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JCT-SR-hyV">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -859,7 +885,6 @@
                         <segue destination="R54-jX-0e7" kind="relationship" relationship="rootViewController" id="izg-Hb-ZFW"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YiI-hR-2Ms" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3451" y="1295"/>
         </scene>
@@ -925,6 +950,11 @@
                                 <action selector="cancel:" destination="gVh-Qc-dMu" id="Q4B-yg-G4G"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="KkP-qh-KaL">
+                            <connections>
+                                <segue destination="DVn-hm-SJI" kind="modal" id="82R-4g-8YI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="spinReader" destination="XrY-dP-cZD" id="KW1-Pa-xJ9"/>
@@ -955,6 +985,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="MainTabBar" automaticallyAdjustsScrollViewInsets="NO" id="N8e-FW-ElW" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="NQe-BJ-KWu"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="0lS-or-6Of">
                         <autoresizingMask key="autoresizingMask"/>
@@ -1020,4 +1051,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="82R-4g-8YI"/>
+    </inferredMetricsTieBreakers>
 </document>

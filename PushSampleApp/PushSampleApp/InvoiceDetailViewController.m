@@ -45,7 +45,9 @@
 {
     [super viewWillAppear:animated];
     
-    if ([PayPalHereSDK activeMerchant] == nil)
+    PPHMerchantInfo *currentMerchant = [PayPalHereSDK activeMerchant];
+    
+    if (currentMerchant == nil)
     {
         [self showAlertWithTitle:@"No Merchant" andMessage:@"Please login before using this page"];
     }
@@ -81,6 +83,7 @@
     
     
 }
+#pragma mark - POS Buttons
 
 - (IBAction)btnBurger:(id)sender
 {
@@ -151,6 +154,8 @@
     
 }
 
+#pragma mark - Show Alert
+
 -(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
 {
     UIAlertView *alertView =
@@ -162,6 +167,8 @@
      otherButtonTitles:nil];
     [alertView show];
 }
+
+#pragma mark - Total Helpers
 
 - (double)getTotalAmount
 {

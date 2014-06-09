@@ -10,11 +10,14 @@
 #import <CoreLocation/CoreLocation.h>
 #import <PayPalHereSDK/PPHLocation.h>
 #import "LoginViewController.h"
+#import "Invoice.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) NSMutableArray *_invoices;
+@property (strong, nonatomic) NSMutableArray *transactionRecords;
 @property (strong, nonatomic) LoginViewController *viewController;
 
+-(void)addInvoice:(Invoice *)invoiceToAdd;
 @end
