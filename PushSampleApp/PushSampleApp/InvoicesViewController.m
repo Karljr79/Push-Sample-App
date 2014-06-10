@@ -93,6 +93,9 @@
     else if ([status isEqualToString:@"UnPaid"]){
         return [UIImage imageNamed:@"cross"];
     }
+    else if ([status isEqualToString:@"Refund"]){
+        return [UIImage imageNamed:@"Refund"];
+    }
         return nil;
 }
 
@@ -105,12 +108,12 @@
 
 #pragma mark - InvoiceDetailViewControllerDelegate
 
-- (void)invoiceDetailViewControllerDidCancel:(InvoiceDetailViewController *)controller
+- (void)invoiceDetailViewControllerDidCancel:(InvoiceCreationViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)invoiceDetailViewControllerDidSave:(InvoiceDetailViewController *)controller
+- (void)invoiceDetailViewControllerDidSave:(InvoiceCreationViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -128,10 +131,9 @@
 }
 
 //12
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    id allInvoices = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     PaymentViewController *paymentVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentVC"];
-    paymentVC.invoiceToPay = [allInvoices objectAtIndex:indexPath.row];
     paymentVC.invoiceID = [NSNumber numberWithInt:indexPath.row];
     [self.navigationController pushViewController:paymentVC animated:YES];
 }
@@ -142,7 +144,7 @@
     if ([segue.identifier isEqualToString:@"AddInvoice"]) {
         
         UINavigationController *navigationController = segue.destinationViewController;
-        InvoiceDetailViewController *invoiceDetailViewController = [navigationController viewControllers][0];
+        InvoiceCreationViewController *invoiceDetailViewController = [navigationController viewControllers][0];
         invoiceDetailViewController.delegate = self;
     }
 }

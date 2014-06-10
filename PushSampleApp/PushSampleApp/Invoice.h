@@ -16,7 +16,7 @@
 @property (nonatomic, assign) NSString *status;
 @property (nonatomic, copy) NSString *transactionID; //TODO get rid of me in favor of PPH class
 @property (nonatomic, copy) NSMutableDictionary *shoppingCart;
-@property (nonatomic, copy) PPHTransactionRecord *transactionRecord;
+@property (nonatomic, assign) PPHTransactionResponse *transactionResponse;
 
 -(NSString*)getTotalString;
 -(void)updateInvoiceWithTransactionRecord:(PPHTransactionRecord *)record;

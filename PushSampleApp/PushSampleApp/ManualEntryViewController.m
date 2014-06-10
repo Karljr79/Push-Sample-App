@@ -17,8 +17,6 @@
 
 @interface ManualEntryViewController ()
 
-@property (strong, nonatomic)PPHTransactionResponse *transactionResponse;
-
 @end
 
 @implementation ManualEntryViewController
@@ -84,6 +82,8 @@
         self.spinProcessing.hidden = NO;
         [self.spinProcessing startAnimating];
         
+        self.btnConfirmPayment.enabled = NO;
+        
         //format the date usong NSDateComponents
         NSDateComponents *expDateFormatter = [[NSDateComponents alloc] init];
         [expDateFormatter setMonth:strCCExpMonth.integerValue];
@@ -113,16 +113,23 @@
 -(void)completeTransaction
 {
     //complete transaction and sync up data
-    if(_transactionResponse.record != nil) {
+    if(self.transactionResponse.record != nil)
+    {
+        
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // Add the record into an array so that we can issue a refund later.
-        [appDelegate.transactionRecords addObject:_transactionResponse.record];
+        Invoice* myInvoice = (Invoice *)[appDelegate._invoices objectAtIndex:self.invoiceID.integerValue];
+        
+        myInvoice.transactionResponse = self.transactionResponse;
+        myInvoice.transactionID = self.transactionResponse.record.transactionId;
     }
     
     [self showAlertWithTitle:@"Payment" andMessage:@"Payment Complete, press the done button"];
     
     [[self.navigationItem rightBarButtonItem] setEnabled:YES];
+    
+    
     
 }
 

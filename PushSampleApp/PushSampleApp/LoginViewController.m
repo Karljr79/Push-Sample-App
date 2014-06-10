@@ -71,6 +71,13 @@
     if(lastGoodUserName) {
         self.txtUserName.text = lastGoodUserName;
     }
+    
+    PPHMerchantInfo *currentMerchant = [PayPalHereSDK activeMerchant];
+    
+    if (currentMerchant != nil)
+    {
+        self.txtLoginStatus.text = @"Logged In";
+    }
 }
 
 - (void)didReceiveMemoryWarning

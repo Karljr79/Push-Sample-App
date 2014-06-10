@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginSpinner;
 @property (weak, nonatomic) IBOutlet UILabel *txtServiceUsed;
+@property (weak, nonatomic) IBOutlet UILabel *txtLoginStatus;
 
 @property (nonatomic) IBOutlet PPHMerchantInfo *merchant;
 

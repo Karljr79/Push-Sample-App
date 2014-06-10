@@ -81,16 +81,18 @@
 - (void)showPaymentStatusView
 {
     //complete transaction and sync up data
-    if(_transactionResponse.record != nil) {
+    if(_transactionResponse.record != nil)
+    {
         //NSString *myResponse = _transactionResponse.record.transactionId;
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         Invoice *myInvoice = [appDelegate._invoices objectAtIndex:self.invoiceID.integerValue];
-        myInvoice.transactionRecord = _transactionResponse.record;
-        
-//        PaymentStatusViewController *paymentVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentStatusVC"];
-//        paymentVC.transactionResponse = _transactionResponse;
-//        paymentVC.invoiceID = self.invoiceID;
+        myInvoice.transactionResponse = _transactionResponse;
+        myInvoice.transactionID = _transactionResponse.record.transactionId;
     }
+    
+    [self showAlertWithTitle:@"Payment" andMessage:@"Payment Complete, press the done button"];
+    
+    [[self.navigationItem rightBarButtonItem] setEnabled:YES];
 }
 
 #pragma mark PPHTransactionControllerDelegate
@@ -198,6 +200,18 @@
                                                                   }
                                                               }];
     }
+}
+
+-(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
+{
+    UIAlertView *alertView =
+    [[UIAlertView alloc]
+     initWithTitle:title
+     message: message
+     delegate:self
+     cancelButtonTitle:@"OK"
+     otherButtonTitles:nil];
+    [alertView show];
 }
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

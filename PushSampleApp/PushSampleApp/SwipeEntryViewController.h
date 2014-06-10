@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
+#import <PayPalHereSDK/PPHCardReaderDelegate.h>
 
 @class SwipeEntryViewController;
 
@@ -24,5 +25,6 @@
 
 - (IBAction)cancel:(id)sender;
 - (void)showPaymentStatusView;
+- (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 
 @end

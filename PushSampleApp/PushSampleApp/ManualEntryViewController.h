@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "Invoice.h"
+#import <PayPalHereSDK/PayPalHereSDK.h>
+#import <PayPalHereSDK/PPHTransactionManager.h>
+#import <PayPalHereSDK/PPHTransactionRecord.h>
 
 @class ManualEntryViewController;
 
@@ -26,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinProcessing;
 @property (weak, nonatomic) IBOutlet UIImageView *imgCardType;
 @property (weak, nonatomic) NSNumber *invoiceID;
+@property (strong, nonatomic)PPHTransactionResponse *transactionResponse;
+@property (weak, nonatomic) IBOutlet UIButton *btnConfirmPayment;
 
 - (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 - (void)imageForCardType;

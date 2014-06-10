@@ -13,7 +13,6 @@
 
 @interface PaymentViewController : UIViewController <ManualEntryViewControllerDelegate, SwipeEntryViewControllerDelegate>;
 
-@property (strong, nonatomic) Invoice *invoiceToPay;
 @property (weak, nonatomic) NSNumber *invoiceID;
 @property (weak, nonatomic) IBOutlet UIImageView *imageStatus;
 @property (weak, nonatomic) IBOutlet UITextField *txtTotalAmount;
@@ -24,6 +23,7 @@
 
 - (IBAction)btnRefund:(id)sender;
 - (UIImage *)imageForStatus:(NSString*)status;
+-(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 PayPal. All rights reserved.
 //
 
-#import "InvoiceDetailViewController.h"
+#import "InvoiceCreationViewController.h"
 #import "AppDelegate.h"
 #import "Invoice.h"
 
@@ -17,11 +17,11 @@
 #define kPRICE			@"Price"
 #define kQUANTITY		@"Quantity"
 
-@interface InvoiceDetailViewController ()
+@interface InvoiceCreationViewController ()
 
 @end
 
-@implementation InvoiceDetailViewController
+@implementation InvoiceCreationViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

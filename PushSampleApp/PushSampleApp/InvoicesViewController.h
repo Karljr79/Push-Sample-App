@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "InvoiceDetailViewController.h"
+#import "InvoiceCreationViewController.h"
 #import "PaymentStatusViewController.h"
 
 @interface InvoicesViewController : UITableViewController <InvoiceDetailViewControllerDelegate>

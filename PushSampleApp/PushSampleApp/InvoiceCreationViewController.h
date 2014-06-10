@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Invoice.h"
 
-@class InvoiceDetailViewController;
+@class InvoiceCreationViewController;
 
 @protocol InvoiceDetailViewControllerDelegate <NSObject>
-- (void)invoiceDetailViewControllerDidCancel:(InvoiceDetailViewController *)controller;
-- (void)invoiceDetailViewControllerDidSave:(InvoiceDetailViewController *)controller;
+- (void)invoiceDetailViewControllerDidCancel:(InvoiceCreationViewController *)controller;
+- (void)invoiceDetailViewControllerDidSave:(InvoiceCreationViewController *)controller;
 @end
 
-@interface InvoiceDetailViewController : UITableViewController
+@interface InvoiceCreationViewController : UITableViewController
 
 @property (nonatomic, weak) id <InvoiceDetailViewControllerDelegate> delegate;
 @property (nonatomic, strong) Invoice* currInvoice;

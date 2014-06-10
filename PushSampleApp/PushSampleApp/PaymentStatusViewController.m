@@ -50,16 +50,16 @@
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         Invoice *myInvoice = [appDelegate._invoices objectAtIndex:self.invoiceID.integerValue];
         myInvoice.status = @"Paid";
-        myInvoice.transactionID = self.transactionResponse.record.transactionId;
+        //myInvoice.transactionID = self.transactionResponse.record.transactionId;
         
         
         
         if(self.transactionResponse.record.transactionId != nil)
         {
-            self.txtStatusDetail.text = [NSString stringWithFormat: @"Transaction Id: %@", self.transactionResponse.record.transactionId];
+            self.txtStatusDetail.text = [NSString stringWithFormat: @"Transaction Id: %@", myInvoice.transactionResponse.record.transactionId];
         } else
         {
-            self.txtStatusDetail.text = [NSString stringWithFormat: @"Invoice Id: %@", self.transactionResponse.record.payPalInvoiceId];
+            self.txtStatusDetail.text = [NSString stringWithFormat: @"Invoice Id: %@", myInvoice.transactionResponse.record.transactionId];
         }
     }
     else

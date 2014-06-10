@@ -9,6 +9,7 @@
 #import "PaymentViewController.h"
 #import "SwipeViewController.h"
 #import "ManualViewController.h"
+#import "AppDelegate.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 
@@ -20,6 +21,8 @@
 #define kQUANTITY		@"Quantity"
 
 @interface PaymentViewController ()
+
+@property (strong, nonatomic) Invoice *currInvoice;
 
 @end
 
@@ -34,18 +37,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.txtTotalAmount.text = self.invoiceToPay.getTotalString;
-    self.imageStatus.image = [self imageForStatus:self.invoiceToPay.status];
+    //load the invoice in question
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    //set up page view, buttons, etc.
-    if ([self.invoiceToPay.status  isEqual: @"Paid"])
-    {
-        self.txtTotalLabel.text = @"Total Paid";
-        self.buttonManual.hidden = YES;
-        self.buttonSwipe.hidden = YES;
-        self.buttonRefund.hidden = NO;
-    }
+    // Add the record into an array so that we can issue a refund later.
+    Invoice* myInvoice = (Invoice *)[appDelegate._invoices objectAtIndex:self.invoiceID.integerValue];
+    self.currInvoice = myInvoice;
+    
+    // Do any additional setup after loading the view.
+    self.txtTotalAmount.text = self.currInvoice.getTotalString;
+    
+    [self refreshView];
 }
 
 //add to the paypal invoice upon loading the page
@@ -59,7 +61,7 @@
     
     for (NSString *itemName in itemList)
     {
-        NSMutableDictionary *items = [self.invoiceToPay.shoppingCart valueForKey:itemName];
+        NSMutableDictionary *items = [self.currInvoice.shoppingCart valueForKey:itemName];
         NSDecimalNumber *quantity = [items valueForKey:kQUANTITY];
         NSDecimalNumber *costEach = [items valueForKey:kPRICE];
         
@@ -68,16 +70,36 @@
 
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-//TODO Refund Page
+
 - (IBAction)btnRefund:(id)sender
 {
+    [self handleRefund:self.currInvoice.transactionResponse.record];
+}
+
+-(void)handleRefund:(PPHTransactionRecord *)txRecord
+{
+    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    [tm beginRefund:txRecord forAmount:txRecord.invoice.totalAmount completionHandler:^(PPHPaymentResponse * response)
+    {
+        if(response.error)
+        {
+            [self showAlertWithTitle:@"Refund Error" andMessage:response.error.description];
+        } else
+        {
+            [self showAlertWithTitle:@"Refund Successful" andMessage:@"Your transaction amount was successfully refunded."];
+            
+            self.currInvoice.status = @"Refund";
+            
+            [self refreshView];
+        }
+
+    }];
 }
 
 //sets header image based on the current invoice's status
@@ -89,7 +111,44 @@
     else if ([status isEqualToString:@"UnPaid"]){
         return [UIImage imageNamed:@"Unpaid"];
     }
+    else if ([status isEqualToString:@"Refund"]){
+        return [UIImage imageNamed:@"Refunded"];
+    }
     return nil;
+}
+
+-(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
+{
+    UIAlertView *alertView =
+    [[UIAlertView alloc]
+     initWithTitle:title
+     message: message
+     delegate:self
+     cancelButtonTitle:@"OK"
+     otherButtonTitles:nil];
+    [alertView show];
+}
+
+-(void)refreshView
+{
+    self.imageStatus.image = [self imageForStatus:self.currInvoice.status];
+    
+    
+    //set up page view, buttons, etc.
+    if ([self.currInvoice.status  isEqual: @"Paid"])
+    {
+        self.txtTotalLabel.text = @"Total Paid";
+        self.buttonManual.hidden = YES;
+        self.buttonSwipe.hidden = YES;
+        self.buttonRefund.hidden = NO;
+    }
+    else if ([self.currInvoice.status isEqual:@"Refund"])
+    {
+        self.txtTotalLabel.text = @"Total Refunded";
+        self.buttonManual.hidden = YES;
+        self.buttonSwipe.hidden = YES;
+        self.buttonRefund.hidden = YES;
+    }
 }
 
 #pragma mark - Navigation
