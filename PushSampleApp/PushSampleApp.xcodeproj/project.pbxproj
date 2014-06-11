@@ -30,7 +30,7 @@
 		13028C421937C3C300F4B5E4 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 13028C371937C3C300F4B5E4 /* AFURLConnectionOperation.m */; };
 		13028C431937C3C300F4B5E4 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 13028C391937C3C300F4B5E4 /* AFXMLRequestOperation.m */; };
 		13028C441937C3C300F4B5E4 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 13028C3B1937C3C300F4B5E4 /* UIImageView+AFNetworking.m */; };
-		130A0DDA194917EA00B90A4C /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 130A0DD9194917EA00B90A4C /* PayPalHereSDK.bundle */; };
+		130A0DDC194919FA00B90A4C /* PayPalHereSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 130A0DDB194919FA00B90A4C /* PayPalHereSDK.bundle */; };
 		131B4DEF19477CB100247AA0 /* Refund.png in Resources */ = {isa = PBXBuildFile; fileRef = 131B4DEE19477CB100247AA0 /* Refund.png */; };
 		131B4DF119477D3600247AA0 /* Refunded.png in Resources */ = {isa = PBXBuildFile; fileRef = 131B4DF019477D3600247AA0 /* Refunded.png */; };
 		131B4DF51947B59800247AA0 /* PPHlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 131B4DF41947B59800247AA0 /* PPHlogo.png */; };
@@ -118,7 +118,7 @@
 		13028C391937C3C300F4B5E4 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		13028C3A1937C3C300F4B5E4 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		13028C3B1937C3C300F4B5E4 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		130A0DD9194917EA00B90A4C /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PayPalHereSDK.bundle; sourceTree = "<group>"; };
+		130A0DDB194919FA00B90A4C /* PayPalHereSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PayPalHereSDK.bundle; path = "../../ios-here-sdk-dist/SDK/Release/PayPalHereSDK.bundle"; sourceTree = "<group>"; };
 		131B4DEE19477CB100247AA0 /* Refund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Refund.png; sourceTree = "<group>"; };
 		131B4DF019477D3600247AA0 /* Refunded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Refunded.png; sourceTree = "<group>"; };
 		131B4DF41947B59800247AA0 /* PPHlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PPHlogo.png; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				13028C1F1937AD9C00F4B5E4 /* libxml2.dylib */,
-				130A0DD9194917EA00B90A4C /* PayPalHereSDK.bundle */,
+				130A0DDB194919FA00B90A4C /* PayPalHereSDK.bundle */,
 				13A4FEDB1936AE8A00A7C9FE /* PayPalHereSDK.framework */,
 				13028C251937ADDD00F4B5E4 /* CoreTelephony.framework */,
 				13028C231937ADD000F4B5E4 /* MediaPlayer.framework */,
@@ -450,6 +450,7 @@
 				13EDD3C1193CD772009108C5 /* cross.png in Resources */,
 				131B4DEF19477CB100247AA0 /* Refund.png in Resources */,
 				BBBC27BE18A5ACED008E940F /* home-7.png in Resources */,
+				130A0DDC194919FA00B90A4C /* PayPalHereSDK.bundle in Resources */,
 				1363F646193D2C74002FD7D3 /* Unpaid.png in Resources */,
 				BBBC27BD18A5ACED008E940F /* bookmark-7.png in Resources */,
 				BBBC27BC18A5ACED008E940F /* bell-7.png in Resources */,
@@ -464,7 +465,6 @@
 				131B4DF119477D3600247AA0 /* Refunded.png in Resources */,
 				13669AA9193E992200011C38 /* logoVisa.png in Resources */,
 				BBBC27C118A5ACED008E940F /* write-7.png in Resources */,
-				130A0DDA194917EA00B90A4C /* PayPalHereSDK.bundle in Resources */,
 				1363F645193D2C74002FD7D3 /* Paid.png in Resources */,
 				BB05E94518A2AC4800F0D3CA /* Main.storyboard in Resources */,
 			);
