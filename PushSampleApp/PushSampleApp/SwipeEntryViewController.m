@@ -13,6 +13,7 @@
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
 #import <PayPalHereSDK/PPHTransactionWatcher.h>
+#import <PayPalHereSDK/PPHCardReaderDelegate.h>
 
 
 #define kStatusWaiting @"Waiting for Card reader"
@@ -43,13 +44,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+     [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
+    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    PPHInvoice *invoice = tm.currentInvoice;
+    
+    NSLog(@"CURRENT INVOICE %@", invoice.totalAmount.stringValue);
     
     self.transactionWatcher = [[PPHTransactionWatcher alloc] initWithDelegate:self];
     self.cardWatcher = [[PPHCardReaderWatcher alloc] initWithSimpleDelegate:self];
