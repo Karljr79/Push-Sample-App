@@ -73,7 +73,7 @@
             </objects>
             <point key="canvasLocation" x="310" y="-736"/>
         </scene>
-        <!--Set Amount View Controller - Set Amount-->
+        <!--Set Amount View Controller - Info-->
         <scene sceneID="rxR-3f-Iiw">
             <objects>
                 <viewController storyboardIdentifier="SetAmountVC" id="hRt-j5-A25" customClass="SetAmountViewController" sceneMemberID="viewController">
@@ -95,7 +95,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Set Amount" image="bookmark-7.png" id="3FJ-hN-hr5"/>
+                    <tabBarItem key="tabBarItem" title="Info" image="gear.png" id="3FJ-hN-hr5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWr-jA-a06" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1065,7 +1065,7 @@
     </scenes>
     <resources>
         <image name="PPHlogo.png" width="272" height="79"/>
-        <image name="bookmark-7.png" width="30" height="30"/>
+        <image name="gear.png" width="30" height="30"/>
         <image name="home-7.png" width="30" height="30"/>
         <image name="list-star-7.png" width="30" height="30"/>
         <image name="write-7.png" width="29" height="30"/>
