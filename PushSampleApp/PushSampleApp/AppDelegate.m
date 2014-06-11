@@ -6,16 +6,36 @@
 //  Copyright (c) 2014 Sample App. All rights reserved.
 //
 
-#import "PushAppDelegate.h"
+#import "AppDelegate.h"
+#import "Invoice.h"
+#import "InvoicesViewController.h"
+#import <PayPalHereSDK/PayPalHereSDK.h>
 
-//TODO - Add global login bool
+@interface AppDelegate() <PPHLoggingDelegate>
 
-@implementation PushAppDelegate
+@property (nonatomic,strong) id<PPHLoggingDelegate> sdkLogger;
+
+@end
+
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //set the tab bar button colors
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.0/255.0 green:12.0/255.0 blue:250.0/255.0 alpha:1.0]];
+    
+    self._invoices = [NSMutableArray arrayWithCapacity:30];
+    self.transactionRecords = [NSMutableArray arrayWithCapacity:30];
+    
+    self.sdkLogger = [PayPalHereSDK loggingDelegate];
+    [PayPalHereSDK setLoggingDelegate:self];
+    
+    //Set BN Code
+    [PayPalHereSDK setReferrerCode:@"KarlSample"];
+    
+    // Either the app, or the SDK must requrest location access if we'd like
+    // the SDK to take payments.
+    [PayPalHereSDK askForLocationAccess];
     
     return YES;
 }
@@ -116,6 +136,64 @@
         //Add handlers here for empty user info if necessary
     }
     
+}
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+	if ([url.host isEqualToString:@"oauth"]) {
+        
+		NSMutableDictionary *query = [[NSMutableDictionary alloc] init];
+		for (NSString *keyValuePair in [url.query componentsSeparatedByString:@"&"]) {
+			NSArray *pair = [keyValuePair componentsSeparatedByString:@"="];
+			if (!(pair && [pair count] == 2)) continue;
+            NSString *escapedData = [pair objectAtIndex:1];
+            escapedData = [escapedData stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+			[query setObject:escapedData forKey:[pair objectAtIndex:0]];
+		}
+        
+		if ([query objectForKey:@"access_token"] &&
+			[query objectForKey:@"expires_in"] &&
+			[query objectForKey:@"refresh_url"] &&
+			[self.viewController isKindOfClass:[LoginViewController class]]) {
+			[self.viewController setActiveMerchantWithAccessTokenDict:query];
+		}
+        
+	}
+	else {
+		NSLog(@"%s url.host is NOT \"oauth\" so we're leaving without doing anything!", __FUNCTION__);
+	}
+    
+	return YES;
+}
+
+-(void)addInvoice:(Invoice*)invoiceToAdd
+{
+    [self._invoices addObject:invoiceToAdd];
+}
+
+// Let's intercept the logging messages of the SDK
+// and display them so we can see what's happening.
+//
+#pragma mark PPHLoggingDelegate methods
+-(void)logPayPalHereInfo:(NSString *)message {
+    NSLog(@"%@", message);
+}
+
+-(void)logPayPalHereError:(NSString *)message {
+    NSLog(@"%@", message);
+    [self.sdkLogger logPayPalHereError: message];
+}
+
+-(void)logPayPalHereWarning:(NSString *)message {
+    NSLog(@"%@", message);
+}
+
+-(void)logPayPalHereDebug:(NSString *)message {
+    NSLog(@"Debug: %@", message);
+}
+
+-(void)logPayPalHereHardwareInfo:(NSString *)message {
+    NSLog(@"Debug: %@", message);
 }
 
 @end

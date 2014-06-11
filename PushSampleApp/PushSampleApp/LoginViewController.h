@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginSpinner;
 @property (weak, nonatomic) IBOutlet UILabel *txtServiceUsed;
+@property (weak, nonatomic) IBOutlet UILabel *txtLoginStatus;
 
 @property (nonatomic) IBOutlet PPHMerchantInfo *merchant;
 
@@ -27,6 +28,6 @@
 - (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 - (void)dismissKeyboard;
 - (void)setActiveMerchantWithAccessTokenDict:(NSDictionary *)JSON;
-- (void)transitionToTransactionViewController;
+- (void)transitionToInvoicesViewController;
 
 @end

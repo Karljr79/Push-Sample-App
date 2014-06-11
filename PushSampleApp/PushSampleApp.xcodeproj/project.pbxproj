@@ -30,13 +30,32 @@
 		13028C421937C3C300F4B5E4 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 13028C371937C3C300F4B5E4 /* AFURLConnectionOperation.m */; };
 		13028C431937C3C300F4B5E4 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 13028C391937C3C300F4B5E4 /* AFXMLRequestOperation.m */; };
 		13028C441937C3C300F4B5E4 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 13028C3B1937C3C300F4B5E4 /* UIImageView+AFNetworking.m */; };
+		131B4DEF19477CB100247AA0 /* Refund.png in Resources */ = {isa = PBXBuildFile; fileRef = 131B4DEE19477CB100247AA0 /* Refund.png */; };
+		131B4DF119477D3600247AA0 /* Refunded.png in Resources */ = {isa = PBXBuildFile; fileRef = 131B4DF019477D3600247AA0 /* Refunded.png */; };
+		131B4DF51947B59800247AA0 /* PPHlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 131B4DF41947B59800247AA0 /* PPHlogo.png */; };
+		1333DDE9193F853100420FA6 /* PaymentStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333DDE8193F853100420FA6 /* PaymentStatusViewController.m */; };
+		1333DDEC193FC4C600420FA6 /* SwipeEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333DDEB193FC4C600420FA6 /* SwipeEntryViewController.m */; };
+		133C020A193E47B900767F87 /* ManualEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133C0209193E47B900767F87 /* ManualEntryViewController.m */; };
+		133FB29C19393C400022C1E9 /* InvoicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FB29B19393C400022C1E9 /* InvoicesViewController.m */; };
+		133FB29F19393CEB0022C1E9 /* Invoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FB29E19393CEB0022C1E9 /* Invoice.m */; };
+		133FB2A2193945130022C1E9 /* InvoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FB2A1193945130022C1E9 /* InvoiceCell.m */; };
+		133FB2A919394DC10022C1E9 /* InvoiceCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FB2A819394DC10022C1E9 /* InvoiceCreationViewController.m */; };
+		1345862419465B3200C4A302 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 1345862319465B3200C4A302 /* check.png */; };
+		1363F642193D2671002FD7D3 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1363F641193D2671002FD7D3 /* PaymentViewController.m */; };
+		1363F645193D2C74002FD7D3 /* Paid.png in Resources */ = {isa = PBXBuildFile; fileRef = 1363F643193D2C74002FD7D3 /* Paid.png */; };
+		1363F646193D2C74002FD7D3 /* Unpaid.png in Resources */ = {isa = PBXBuildFile; fileRef = 1363F644193D2C74002FD7D3 /* Unpaid.png */; };
+		13669AA7193E992200011C38 /* logoAmex.png in Resources */ = {isa = PBXBuildFile; fileRef = 13669AA4193E992200011C38 /* logoAmex.png */; };
+		13669AA8193E992200011C38 /* logoMC.png in Resources */ = {isa = PBXBuildFile; fileRef = 13669AA5193E992200011C38 /* logoMC.png */; };
+		13669AA9193E992200011C38 /* logoVisa.png in Resources */ = {isa = PBXBuildFile; fileRef = 13669AA6193E992200011C38 /* logoVisa.png */; };
 		13A4FEDC1936AE8A00A7C9FE /* PayPalHereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13A4FEDB1936AE8A00A7C9FE /* PayPalHereSDK.framework */; };
+		13EDD3C1193CD772009108C5 /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 13EDD3BF193CD772009108C5 /* cross.png */; };
+		13F10197193D45E300D3E7BA /* SetAmountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F10196193D45E300D3E7BA /* SetAmountViewController.m */; };
 		BB05E93218A2AC4800F0D3CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB05E93118A2AC4800F0D3CA /* Foundation.framework */; };
 		BB05E93418A2AC4800F0D3CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB05E93318A2AC4800F0D3CA /* CoreGraphics.framework */; };
 		BB05E93618A2AC4800F0D3CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB05E93518A2AC4800F0D3CA /* UIKit.framework */; };
 		BB05E93C18A2AC4800F0D3CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB05E93A18A2AC4800F0D3CA /* InfoPlist.strings */; };
 		BB05E93E18A2AC4800F0D3CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB05E93D18A2AC4800F0D3CA /* main.m */; };
-		BB05E94218A2AC4800F0D3CA /* PushAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB05E94118A2AC4800F0D3CA /* PushAppDelegate.m */; };
+		BB05E94218A2AC4800F0D3CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB05E94118A2AC4800F0D3CA /* AppDelegate.m */; };
 		BB05E94518A2AC4800F0D3CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB05E94318A2AC4800F0D3CA /* Main.storyboard */; };
 		BB05E94818A2AC4800F0D3CA /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB05E94718A2AC4800F0D3CA /* AboutViewController.m */; };
 		BB05E94A18A2AC4800F0D3CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB05E94918A2AC4800F0D3CA /* Images.xcassets */; };
@@ -44,14 +63,11 @@
 		BB05E95218A2AC4800F0D3CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB05E93118A2AC4800F0D3CA /* Foundation.framework */; };
 		BB05E95318A2AC4800F0D3CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB05E93518A2AC4800F0D3CA /* UIKit.framework */; };
 		BB05E96818A2AD0200F0D3CA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB05E96718A2AD0200F0D3CA /* LoginViewController.m */; };
-		BB05E96F18A2AFC600F0D3CA /* TagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB05E96E18A2AFC600F0D3CA /* TagsViewController.m */; };
 		BBBC27BC18A5ACED008E940F /* bell-7.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBC27B618A5ACED008E940F /* bell-7.png */; };
 		BBBC27BD18A5ACED008E940F /* bookmark-7.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBC27B718A5ACED008E940F /* bookmark-7.png */; };
 		BBBC27BE18A5ACED008E940F /* home-7.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBC27B818A5ACED008E940F /* home-7.png */; };
 		BBBC27BF18A5ACED008E940F /* list-star-7.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBC27B918A5ACED008E940F /* list-star-7.png */; };
 		BBBC27C118A5ACED008E940F /* write-7.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBC27BB18A5ACED008E940F /* write-7.png */; };
-		BBCD38E518A57B2E006E59A3 /* ItemizedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCD38E418A57B2E006E59A3 /* ItemizedViewController.m */; };
-		BBCD38E818A57C0C006E59A3 /* LocalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCD38E718A57C0C006E59A3 /* LocalsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,15 +116,43 @@
 		13028C391937C3C300F4B5E4 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		13028C3A1937C3C300F4B5E4 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		13028C3B1937C3C300F4B5E4 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		131B4DEE19477CB100247AA0 /* Refund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Refund.png; sourceTree = "<group>"; };
+		131B4DF019477D3600247AA0 /* Refunded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Refunded.png; sourceTree = "<group>"; };
+		131B4DF41947B59800247AA0 /* PPHlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PPHlogo.png; sourceTree = "<group>"; };
+		1333DDE7193F853100420FA6 /* PaymentStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentStatusViewController.h; sourceTree = "<group>"; };
+		1333DDE8193F853100420FA6 /* PaymentStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentStatusViewController.m; sourceTree = "<group>"; };
+		1333DDEA193FC4C600420FA6 /* SwipeEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeEntryViewController.h; sourceTree = "<group>"; };
+		1333DDEB193FC4C600420FA6 /* SwipeEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeEntryViewController.m; sourceTree = "<group>"; };
+		133C0208193E47B900767F87 /* ManualEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryViewController.h; sourceTree = "<group>"; };
+		133C0209193E47B900767F87 /* ManualEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryViewController.m; sourceTree = "<group>"; };
+		133FB29A19393C400022C1E9 /* InvoicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvoicesViewController.h; sourceTree = "<group>"; };
+		133FB29B19393C400022C1E9 /* InvoicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvoicesViewController.m; sourceTree = "<group>"; };
+		133FB29D19393CEB0022C1E9 /* Invoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Invoice.h; sourceTree = "<group>"; };
+		133FB29E19393CEB0022C1E9 /* Invoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Invoice.m; sourceTree = "<group>"; };
+		133FB2A0193945130022C1E9 /* InvoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvoiceCell.h; sourceTree = "<group>"; };
+		133FB2A1193945130022C1E9 /* InvoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvoiceCell.m; sourceTree = "<group>"; };
+		133FB2A719394DC10022C1E9 /* InvoiceCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvoiceCreationViewController.h; sourceTree = "<group>"; };
+		133FB2A819394DC10022C1E9 /* InvoiceCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvoiceCreationViewController.m; sourceTree = "<group>"; };
+		1345862319465B3200C4A302 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		1363F640193D2671002FD7D3 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
+		1363F641193D2671002FD7D3 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
+		1363F643193D2C74002FD7D3 /* Paid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Paid.png; sourceTree = "<group>"; };
+		1363F644193D2C74002FD7D3 /* Unpaid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unpaid.png; sourceTree = "<group>"; };
+		13669AA4193E992200011C38 /* logoAmex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoAmex.png; sourceTree = "<group>"; };
+		13669AA5193E992200011C38 /* logoMC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoMC.png; sourceTree = "<group>"; };
+		13669AA6193E992200011C38 /* logoVisa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoVisa.png; sourceTree = "<group>"; };
 		13A4FEDB1936AE8A00A7C9FE /* PayPalHereSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalHereSDK.framework; path = "../../ios-here-sdk-dist/SDK/Release/PayPalHereSDK.framework"; sourceTree = "<group>"; };
+		13EDD3BF193CD772009108C5 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
+		13F10195193D45E300D3E7BA /* SetAmountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetAmountViewController.h; sourceTree = "<group>"; };
+		13F10196193D45E300D3E7BA /* SetAmountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetAmountViewController.m; sourceTree = "<group>"; };
 		BB05E92E18A2AC4800F0D3CA /* PushSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB05E93118A2AC4800F0D3CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BB05E93318A2AC4800F0D3CA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BB05E93518A2AC4800F0D3CA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BB05E93B18A2AC4800F0D3CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BB05E93D18A2AC4800F0D3CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		BB05E94018A2AC4800F0D3CA /* PushAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PushAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		BB05E94118A2AC4800F0D3CA /* PushAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PushAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		BB05E94018A2AC4800F0D3CA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		BB05E94118A2AC4800F0D3CA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BB05E94418A2AC4800F0D3CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB05E94618A2AC4800F0D3CA /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AboutViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		BB05E94718A2AC4800F0D3CA /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AboutViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -117,8 +161,6 @@
 		BB05E95018A2AC4800F0D3CA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BB05E96618A2AD0200F0D3CA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LoginViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		BB05E96718A2AD0200F0D3CA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		BB05E96D18A2AFC600F0D3CA /* TagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TagsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		BB05E96E18A2AFC600F0D3CA /* TagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TagsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BB839F701908263800D82EFB /* PushSampleApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PushSampleApp-Prefix.pch"; sourceTree = "<group>"; };
 		BB839F711908276900D82EFB /* PushSampleApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PushSampleApp-Info.plist"; sourceTree = "<group>"; };
 		BBBC27B618A5ACED008E940F /* bell-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bell-7.png"; sourceTree = "<group>"; };
@@ -126,10 +168,6 @@
 		BBBC27B818A5ACED008E940F /* home-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-7.png"; sourceTree = "<group>"; };
 		BBBC27B918A5ACED008E940F /* list-star-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-star-7.png"; sourceTree = "<group>"; };
 		BBBC27BB18A5ACED008E940F /* write-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "write-7.png"; sourceTree = "<group>"; };
-		BBCD38E318A57B2E006E59A3 /* ItemizedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ItemizedViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		BBCD38E418A57B2E006E59A3 /* ItemizedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ItemizedViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		BBCD38E618A57C0C006E59A3 /* LocalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LocalsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		BBCD38E718A57C0C006E59A3 /* LocalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LocalsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,18 +302,30 @@
 				BBBC27B518A5ACED008E940F /* Images */,
 				BB05E94918A2AC4800F0D3CA /* Images.xcassets */,
 				BB05E94318A2AC4800F0D3CA /* Main.storyboard */,
-				BB05E94018A2AC4800F0D3CA /* PushAppDelegate.h */,
-				BB05E94118A2AC4800F0D3CA /* PushAppDelegate.m */,
+				BB05E94018A2AC4800F0D3CA /* AppDelegate.h */,
+				BB05E94118A2AC4800F0D3CA /* AppDelegate.m */,
 				BB05E94618A2AC4800F0D3CA /* AboutViewController.h */,
 				BB05E94718A2AC4800F0D3CA /* AboutViewController.m */,
+				133FB29D19393CEB0022C1E9 /* Invoice.h */,
+				133FB29E19393CEB0022C1E9 /* Invoice.m */,
+				133FB2A0193945130022C1E9 /* InvoiceCell.h */,
+				133FB2A1193945130022C1E9 /* InvoiceCell.m */,
+				133FB29A19393C400022C1E9 /* InvoicesViewController.h */,
+				133FB29B19393C400022C1E9 /* InvoicesViewController.m */,
+				133FB2A719394DC10022C1E9 /* InvoiceCreationViewController.h */,
+				133FB2A819394DC10022C1E9 /* InvoiceCreationViewController.m */,
 				BB05E96618A2AD0200F0D3CA /* LoginViewController.h */,
 				BB05E96718A2AD0200F0D3CA /* LoginViewController.m */,
-				BB05E96D18A2AFC600F0D3CA /* TagsViewController.h */,
-				BB05E96E18A2AFC600F0D3CA /* TagsViewController.m */,
-				BBCD38E318A57B2E006E59A3 /* ItemizedViewController.h */,
-				BBCD38E418A57B2E006E59A3 /* ItemizedViewController.m */,
-				BBCD38E618A57C0C006E59A3 /* LocalsViewController.h */,
-				BBCD38E718A57C0C006E59A3 /* LocalsViewController.m */,
+				133C0208193E47B900767F87 /* ManualEntryViewController.h */,
+				133C0209193E47B900767F87 /* ManualEntryViewController.m */,
+				1363F640193D2671002FD7D3 /* PaymentViewController.h */,
+				1363F641193D2671002FD7D3 /* PaymentViewController.m */,
+				1333DDE7193F853100420FA6 /* PaymentStatusViewController.h */,
+				1333DDE8193F853100420FA6 /* PaymentStatusViewController.m */,
+				13F10195193D45E300D3E7BA /* SetAmountViewController.h */,
+				13F10196193D45E300D3E7BA /* SetAmountViewController.m */,
+				1333DDEA193FC4C600420FA6 /* SwipeEntryViewController.h */,
+				1333DDEB193FC4C600420FA6 /* SwipeEntryViewController.m */,
 				BB05E93818A2AC4800F0D3CA /* Supporting Files */,
 			);
 			path = PushSampleApp;
@@ -295,6 +345,16 @@
 		BBBC27B518A5ACED008E940F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				131B4DF41947B59800247AA0 /* PPHlogo.png */,
+				131B4DF019477D3600247AA0 /* Refunded.png */,
+				131B4DEE19477CB100247AA0 /* Refund.png */,
+				1345862319465B3200C4A302 /* check.png */,
+				13669AA4193E992200011C38 /* logoAmex.png */,
+				13669AA5193E992200011C38 /* logoMC.png */,
+				13669AA6193E992200011C38 /* logoVisa.png */,
+				1363F643193D2C74002FD7D3 /* Paid.png */,
+				1363F644193D2C74002FD7D3 /* Unpaid.png */,
+				13EDD3BF193CD772009108C5 /* cross.png */,
 				BBBC27B618A5ACED008E940F /* bell-7.png */,
 				BBBC27B718A5ACED008E940F /* bookmark-7.png */,
 				BBBC27B818A5ACED008E940F /* home-7.png */,
@@ -320,7 +380,7 @@
 			dependencies = (
 			);
 			name = PushSampleApp;
-			productName = OLSampleApp;
+			productName = PPHDemoApp;
 			productReference = BB05E92E18A2AC4800F0D3CA /* PushSampleApp.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -338,7 +398,7 @@
 				BB05E95518A2AC4800F0D3CA /* PBXTargetDependency */,
 			);
 			name = PushSampleAppTests;
-			productName = OLSampleAppTests;
+			productName = PPHDemoAppTests;
 			productReference = BB05E94F18A2AC4800F0D3CA /* PushSampleAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -381,13 +441,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13EDD3C1193CD772009108C5 /* cross.png in Resources */,
+				131B4DEF19477CB100247AA0 /* Refund.png in Resources */,
 				BBBC27BE18A5ACED008E940F /* home-7.png in Resources */,
+				1363F646193D2C74002FD7D3 /* Unpaid.png in Resources */,
 				BBBC27BD18A5ACED008E940F /* bookmark-7.png in Resources */,
 				BBBC27BC18A5ACED008E940F /* bell-7.png in Resources */,
 				BB05E94A18A2AC4800F0D3CA /* Images.xcassets in Resources */,
+				13669AA7193E992200011C38 /* logoAmex.png in Resources */,
 				BB05E93C18A2AC4800F0D3CA /* InfoPlist.strings in Resources */,
+				131B4DF51947B59800247AA0 /* PPHlogo.png in Resources */,
+				13669AA8193E992200011C38 /* logoMC.png in Resources */,
 				BBBC27BF18A5ACED008E940F /* list-star-7.png in Resources */,
+				1345862419465B3200C4A302 /* check.png in Resources */,
+				131B4DF119477D3600247AA0 /* Refunded.png in Resources */,
+				13669AA9193E992200011C38 /* logoVisa.png in Resources */,
 				BBBC27C118A5ACED008E940F /* write-7.png in Resources */,
+				1363F645193D2C74002FD7D3 /* Paid.png in Resources */,
 				BB05E94518A2AC4800F0D3CA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,20 +478,26 @@
 			files = (
 				13028C421937C3C300F4B5E4 /* AFURLConnectionOperation.m in Sources */,
 				13028C3E1937C3C300F4B5E4 /* AFImageRequestOperation.m in Sources */,
+				133FB29F19393CEB0022C1E9 /* Invoice.m in Sources */,
+				1363F642193D2671002FD7D3 /* PaymentViewController.m in Sources */,
 				13028C0D1937AC9900F4B5E4 /* PPSCryptoUtils.m in Sources */,
+				1333DDE9193F853100420FA6 /* PaymentStatusViewController.m in Sources */,
 				BB05E93E18A2AC4800F0D3CA /* main.m in Sources */,
 				13028C0E1937AC9900F4B5E4 /* PPSPreferences.m in Sources */,
 				13028C3F1937C3C300F4B5E4 /* AFJSONRequestOperation.m in Sources */,
-				BB05E96F18A2AFC600F0D3CA /* TagsViewController.m in Sources */,
 				13028C441937C3C300F4B5E4 /* UIImageView+AFNetworking.m in Sources */,
-				BB05E94218A2AC4800F0D3CA /* PushAppDelegate.m in Sources */,
+				133C020A193E47B900767F87 /* ManualEntryViewController.m in Sources */,
+				133FB2A2193945130022C1E9 /* InvoiceCell.m in Sources */,
+				BB05E94218A2AC4800F0D3CA /* AppDelegate.m in Sources */,
 				13028C3C1937C3C300F4B5E4 /* AFHTTPClient.m in Sources */,
+				1333DDEC193FC4C600420FA6 /* SwipeEntryViewController.m in Sources */,
 				13028C411937C3C300F4B5E4 /* AFPropertyListRequestOperation.m in Sources */,
-				BBCD38E518A57B2E006E59A3 /* ItemizedViewController.m in Sources */,
-				BBCD38E818A57C0C006E59A3 /* LocalsViewController.m in Sources */,
 				BB05E94818A2AC4800F0D3CA /* AboutViewController.m in Sources */,
+				133FB29C19393C400022C1E9 /* InvoicesViewController.m in Sources */,
 				BB05E96818A2AD0200F0D3CA /* LoginViewController.m in Sources */,
 				13028C401937C3C300F4B5E4 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				133FB2A919394DC10022C1E9 /* InvoiceCreationViewController.m in Sources */,
+				13F10197193D45E300D3E7BA /* SetAmountViewController.m in Sources */,
 				13028C3D1937C3C300F4B5E4 /* AFHTTPRequestOperation.m in Sources */,
 				13028C431937C3C300F4B5E4 /* AFXMLRequestOperation.m in Sources */,
 			);
@@ -556,7 +632,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PushSampleApp",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-stdlib=libstdc++",
 					"-lstdc++",
@@ -585,7 +661,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PushSampleApp",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-stdlib=libstdc++",
 					"-lstdc++",
