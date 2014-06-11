@@ -31,11 +31,7 @@
     [PayPalHereSDK setLoggingDelegate:self];
     
     //Set BN Code
-<<<<<<< HEAD:PushSampleApp/PushSampleApp/AppDelegate.m
     [PayPalHereSDK setReferrerCode:@"KarlSample"];
-=======
-    [PayPalHereSDK setReferrerCode:@"Karl's Sample"];
->>>>>>> TestUI:PushSampleApp/PushSampleApp/AppDelegate.m
     
     // Either the app, or the SDK must requrest location access if we'd like
     // the SDK to take payments.
