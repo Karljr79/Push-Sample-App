@@ -68,9 +68,18 @@
     // Did we successfully log in in the past?  If so, let's prefill the username box with
     // that last-good user name.
     NSString *lastGoodUserName = [[NSUserDefaults standardUserDefaults] stringForKey:@"lastWorkingUserName"];
-    if(lastGoodUserName) {
+    NSString *lastGoodPassword = [[NSUserDefaults standardUserDefaults] stringForKey:@"lastWorkingPassword"];
+    
+    if(lastGoodUserName)
+    {
         self.txtUserName.text = lastGoodUserName;
     }
+    
+    if(lastGoodPassword)
+    {
+        self.txtPassword.text = lastGoodPassword;
+    }
+    
     
     PPHMerchantInfo *currentMerchant = [PayPalHereSDK activeMerchant];
     
@@ -220,18 +229,6 @@
     
 }
 
-- (void)handleRegistration:(NSString*)trackingID
-{
-    // show alert
-    NSString* messageString = [NSString stringWithFormat: @"Registered ID:%@", _txtUserName.text];
-    UIAlertView *alertID = [[UIAlertView alloc]
-                            initWithTitle:@"Sample App"
-                            message:messageString  delegate:self
-                            cancelButtonTitle:@"Ok"
-                            otherButtonTitles:nil];
-    [alertID show];
-}
-
 
 //close keyboard if view is tapped
 - (void)viewTapped:(UITapGestureRecognizer *)tgr
@@ -298,6 +295,7 @@
     // Since this is a successful login, let's save the user name so we can use it as the default username the next
     // time the sample app is run.
     [[NSUserDefaults standardUserDefaults] setObject:self.txtUserName.text forKey:@"lastWorkingUserName"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.txtPassword.text forKey:@"lastWorkingPassword"];
     
     // Call setActiveMerchant
     // This is how we configure the SDK to use the merchant info and credentails.
@@ -401,10 +399,11 @@
 //If the login was successful, head to the Invoices screen
 - (void)transitionToInvoicesViewController
 {
-//	InvoicesViewController *invoicesVC = nil;
-
-//    
-//    self.navigationController.viewControllers = @[transactionVC];
+    NSUInteger selectedIndex = [self.tabBarController.viewControllers indexOfObject:self];
+    
+    NSLog(@"Index: %i", selectedIndex);
+    
+    [self.tabBarController setSelectedIndex:selectedIndex +1];
 }
 
 

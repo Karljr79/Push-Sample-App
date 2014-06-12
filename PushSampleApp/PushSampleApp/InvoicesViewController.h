@@ -13,7 +13,6 @@
 @interface InvoicesViewController : UITableViewController <InvoiceDetailViewControllerDelegate>
 
 @property (nonatomic, strong)NSMutableArray *invoices;
-@property (nonatomic, strong)NSMutableArray *transactionRecords;
 - (UIImage *)imageForStatus:(NSString*)status;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 

@@ -73,7 +73,7 @@
             </objects>
             <point key="canvasLocation" x="310" y="-736"/>
         </scene>
-        <!--Set Amount View Controller - Set Amount-->
+        <!--Set Amount View Controller - Info-->
         <scene sceneID="rxR-3f-Iiw">
             <objects>
                 <viewController storyboardIdentifier="SetAmountVC" id="hRt-j5-A25" customClass="SetAmountViewController" sceneMemberID="viewController">
@@ -1029,7 +1029,7 @@
         <scene sceneID="2FZ-Rs-XTz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DpE-xt-Flt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Invoice" image="list-star-7.png" id="7u6-bS-GJY"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Invoice" image="list-star-7.png" id="7u6-bS-GJY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CMM-Sn-ZFm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

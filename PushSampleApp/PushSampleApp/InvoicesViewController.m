@@ -40,9 +40,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     id propertyValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
-    id transactionRecords = [(AppDelegate *)[[UIApplication sharedApplication] delegate] transactionRecords];
     self.invoices = propertyValue;
-    self.transactionRecords = transactionRecords;
     
     [self.tableView reloadData];
 }

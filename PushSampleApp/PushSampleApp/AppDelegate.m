@@ -25,7 +25,6 @@
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.0/255.0 green:12.0/255.0 blue:250.0/255.0 alpha:1.0]];
     
     self._invoices = [NSMutableArray arrayWithCapacity:30];
-    self.transactionRecords = [NSMutableArray arrayWithCapacity:30];
     
     self.sdkLogger = [PayPalHereSDK loggingDelegate];
     [PayPalHereSDK setLoggingDelegate:self];

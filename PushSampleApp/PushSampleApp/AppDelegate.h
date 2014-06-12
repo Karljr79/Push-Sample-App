@@ -16,7 +16,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) NSMutableArray *_invoices;
-@property (strong, nonatomic) NSMutableArray *transactionRecords;
 @property (strong, nonatomic) LoginViewController *viewController;
 
 -(void)addInvoice:(Invoice *)invoiceToAdd;

@@ -73,8 +73,10 @@
         
         id allInvoices = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
         [allInvoices addObject:self.currInvoice];
+
         
         [self.delegate invoiceDetailViewControllerDidSave:self];
+        
     }
     else
     {

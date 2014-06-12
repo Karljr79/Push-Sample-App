@@ -24,7 +24,6 @@
 
 - (IBAction)btnLogin:(id)sender;
 - (void)viewTapped:(UITapGestureRecognizer *)tgr;
-- (void)handleRegistration:(NSString*)trackingID;
 - (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 - (void)dismissKeyboard;
 - (void)setActiveMerchantWithAccessTokenDict:(NSDictionary *)JSON;
