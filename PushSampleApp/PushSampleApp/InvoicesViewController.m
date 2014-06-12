@@ -69,15 +69,9 @@
     InvoiceCell *cell = (InvoiceCell *)[tableView dequeueReusableCellWithIdentifier:@"InvoiceCell"];
     
     Invoice *invoice = (self.invoices)[indexPath.row];
-    //PPHTransactionRecord *record = (self.transactionRecords)[indexPath.row];
     cell.amountLabel.text = invoice.getTotalString;
     cell.transactionIDLabel.text = invoice.transactionID;
-    
-//    if (record != nil)
-//    {
-//        cell.transactionIDLabel.text = record.transactionId;
-//    }
-    
+    cell.transactionIDLabel.textColor = [self colorForStatus:invoice.status];
     cell.statusImageView.image = [self imageForStatus:invoice.status];
 
     return cell;
@@ -92,11 +86,25 @@
         return [UIImage imageNamed:@"cross"];
     }
     else if ([status isEqualToString:@"Refund"]){
+        
         return [UIImage imageNamed:@"Refund"];
     }
         return nil;
 }
 
+- (UIColor *)colorForStatus:(NSString*)status
+{
+    if ([status isEqualToString:@"Paid"]){
+        return [UIColor colorWithRed:0.0/255.0 green:255.0/255.0 blue:0/255.0 alpha:1.0];
+    }
+    else if ([status isEqualToString:@"UnPaid"]){
+        return [UIColor colorWithRed:255.0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0];
+    }
+    else if ([status isEqualToString:@"Refund"]){
+        return [UIColor colorWithRed:0.0/255.0 green:0/255.0 blue:255.0/255.0 alpha:1.0];
+    }
+    return nil;
+}
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

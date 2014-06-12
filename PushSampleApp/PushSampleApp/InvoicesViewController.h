@@ -14,6 +14,9 @@
 
 @property (nonatomic, strong)NSMutableArray *invoices;
 - (UIImage *)imageForStatus:(NSString*)status;
+- (UIColor *)colorForStatus:(NSString*)status;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+
 
 @end
