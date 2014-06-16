@@ -10,8 +10,6 @@
 #import "PaymentStatusViewController.h"
 #import "AppDelegate.h"
 #import <PayPalHereSDK/PayPalHereSDK.h>
-#import <PayPalHereSDK/PPHTransactionManager.h>
-#import <PayPalHereSDK/PPHTransactionRecord.h>
 #import <PayPalHereSDK/PPHTransactionWatcher.h>
 #import <PayPalHereSDK/PPHCardReaderDelegate.h>
 

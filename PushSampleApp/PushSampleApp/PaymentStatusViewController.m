@@ -10,7 +10,7 @@
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHTransactionRecord.h>
 #import <PayPalHereSDK/PPHError.h>
-#import <PayPalHereSDK/PayPalHereSDK.h>
+
 
 @interface PaymentStatusViewController ()
 

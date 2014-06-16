@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <PayPalHereSDK/PPHTransactionManager.h>
 #import "AppDelegate.h"
 #import "Invoice.h"
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <PayPalHereSDK/PPHTransactionManager.h>
 #import <PayPalHereSDK/PPHCardReaderDelegate.h>
+#import <PayPalHereSDK/PPHTransactionControllerDelegate.h>
 
 @class SwipeEntryViewController;
 
