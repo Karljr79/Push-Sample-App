@@ -170,6 +170,26 @@
     [self._invoices addObject:invoiceToAdd];
 }
 
+//helper to get total number of unpaid invoices
+-(NSString*)getUnpaidInvoiceCount
+{
+    NSUInteger *unPaidCount = 0;
+    
+    for(int i = 0; i < [self._invoices count]; i++)
+    {
+        Invoice *invoice = [self._invoices objectAtIndex:i];
+        
+        if([invoice.status  isEqual:@"UnPaid"])
+        {
+            unPaidCount++;
+        }
+    }
+    
+    NSString *countString = [NSString stringWithFormat:@"%lu", (unsigned long)unPaidCount];
+    
+    return countString;
+}
+
 // Let's intercept the logging messages of the SDK
 // and display them so we can see what's happening.
 //

@@ -71,11 +71,15 @@
         self.currInvoice.totalAmount = (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:[self getTotalAmount]];
         self.currInvoice.status = @"UnPaid";
         
-        id allInvoices = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        id allInvoices = [appDelegate _invoices];
         [allInvoices addObject:self.currInvoice];
 
-        
         [self.delegate invoiceDetailViewControllerDidSave:self];
+        
+        //set the tab bar badge
+        //[self.navigationController.tabBarItem setBadgeValue:[appDelegate getUnpaidInvoiceCount]];
         
     }
     else

@@ -19,4 +19,5 @@
 @property (strong, nonatomic) LoginViewController *viewController;
 
 -(void)addInvoice:(Invoice *)invoiceToAdd;
+-(NSString*)getUnpaidInvoiceCount;
 @end

@@ -316,6 +316,8 @@
                            // Login complete!
                            // Time to show the sample app UI!
                            //
+                           self.txtLoginStatus.text = @"Logged In";
+                           
                            [self transitionToInvoicesViewController];
                        }
                        
