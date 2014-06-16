@@ -41,6 +41,8 @@
 {
     [super viewWillAppear:animated];
     
+    self.cardWatcher = [[PPHCardReaderWatcher alloc] initWithSimpleDelegate:self];
+    
     [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
     
     if ([[[PayPalHereSDK sharedCardReaderManager] availableDevices] count] > 0)
@@ -70,7 +72,30 @@
 
 - (void)updateReaderInfo
 {
+    self.txtReaderType.text = [self getReaderType];
+    self.txtReaderFamily.text = self.readerInfo.family;
+    self.txtReaderName.text = self.readerInfo.friendlyName;
+}
+
+- (NSString*)getReaderType
+{
+    NSInteger type = self.readerInfo.readerType;
     
+    switch (type)
+    {
+        case 1:
+            return @"Audio Jack Reader";
+            break;
+        case 2:
+            return @"Dock Port Reader";
+            break;
+        case 3:
+            return @"Chip and Pin BT";
+            break;
+        default:
+            return @"Unknown Type";
+            break;
+    }
 }
 
 #pragma mark -
@@ -91,6 +116,8 @@
     self.readerInfo = reader;
     
     self.txtCardReaderStatus.text = kStatusFound;
+    
+    [self updateReaderInfo];
 }
 
 -(void)didRemoveReader:(PPHReaderType)readerType
@@ -131,6 +158,7 @@
     [alertView show];
 }
 
+//would be cool if this were implemented!!!
 -(void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata
 {
 	if (metadata == nil) {
@@ -140,18 +168,29 @@
     
 	self.readerMetadata = metadata;
     
-	if (metadata.serialNumber != nil) {
-		NSLog(@"Transaction VC: %@",[NSString stringWithFormat:@"Reader Serial %@", metadata.serialNumber]);
+	if (metadata.serialNumber != nil)
+    {
+		NSLog(@"InfoView: %@",[NSString stringWithFormat:@"Reader Serial %@", metadata.serialNumber]);
+        self.txtReaderSerial.text = metadata.serialNumber;
 	}
     
-	if (metadata.firmwareRevision != nil) {
-		NSLog(@"Transaction VC: %@",[NSString stringWithFormat:@"Firmware Revision %@", metadata.firmwareRevision]);
+	if (metadata.firmwareRevision != nil)
+    {
+		NSLog(@"InfoView: %@",[NSString stringWithFormat:@"Firmware Revision %@", metadata.firmwareRevision]);
+        self.txtReaderRev.text = metadata.firmwareRevision;
 	}
     
 	const NSInteger kZero = 0;
     
-	if (metadata.batteryLevel != kZero) {
-		NSLog(@"Transaction VC: %@",[NSString stringWithFormat:@"Battery Level %ld", (long)metadata.batteryLevel]);
+	if (metadata.batteryLevel != kZero)
+    {
+        NSString *batLevel = [NSString stringWithFormat:@"%ld", (long)metadata.batteryLevel];
+        
+		NSLog(@"InfoView: %@",[NSString stringWithFormat:@"Battery Level %ld", (long)metadata.batteryLevel]);
+        
+        self.barBattery.progress = metadata.batteryLevel/100;
+        self.txtReaderBattery.text = batLevel;
+        
 	}
     
 }

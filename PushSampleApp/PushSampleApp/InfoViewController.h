@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *txtReaderSerial;
 @property (weak, nonatomic) IBOutlet UILabel *txtReaderRev;
 @property (weak, nonatomic) IBOutlet UILabel *txtReaderBattery;
+@property (weak, nonatomic) IBOutlet UIProgressView *barBattery;
 
 
 @end
