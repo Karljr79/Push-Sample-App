@@ -128,9 +128,7 @@
     [self showAlertWithTitle:@"Payment" andMessage:@"Payment Complete, press the done button"];
     
     [[self.navigationItem rightBarButtonItem] setEnabled:YES];
-    
-    
-    
+    self.btnConfirmPayment.enabled = NO;
 }
 
 -(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message

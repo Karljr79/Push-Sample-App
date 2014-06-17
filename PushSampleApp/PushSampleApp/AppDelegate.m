@@ -173,15 +173,16 @@
 //helper to get total number of unpaid invoices
 -(NSString*)getUnpaidInvoiceCount
 {
-    NSUInteger *unPaidCount = 0;
+    NSInteger unPaidCount = 0;
+    Invoice *invoice = [[Invoice alloc] init];
     
     for(int i = 0; i < [self._invoices count]; i++)
     {
-        Invoice *invoice = [self._invoices objectAtIndex:i];
+        invoice = [self._invoices objectAtIndex:i];
         
         if([invoice.status  isEqual:@"UnPaid"])
         {
-            unPaidCount++;
+            unPaidCount += 1;
         }
     }
     

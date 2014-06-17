@@ -36,9 +36,6 @@
     [super viewDidLoad];
     
     self.currInvoice = [[Invoice alloc] init];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -76,11 +73,7 @@
         id allInvoices = [appDelegate _invoices];
         [allInvoices addObject:self.currInvoice];
 
-        [self.delegate invoiceDetailViewControllerDidSave:self];
-        
-        //set the tab bar badge
-        //[self.navigationController.tabBarItem setBadgeValue:[appDelegate getUnpaidInvoiceCount]];
-        
+        [self.delegate invoiceDetailViewControllerDidSave:self];        
     }
     else
     {

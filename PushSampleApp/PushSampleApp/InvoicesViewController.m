@@ -42,6 +42,15 @@
     id propertyValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] _invoices];
     self.invoices = propertyValue;
     
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    //set the tab bar badge
+    
+    if (![[appDelegate getUnpaidInvoiceCount] isEqualToString:@"0"])
+    {
+        [self.navigationController.tabBarItem setBadgeValue:[appDelegate getUnpaidInvoiceCount]];
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -72,6 +81,7 @@
     cell.amountLabel.text = invoice.getTotalString;
     cell.transactionIDLabel.text = invoice.transactionID;
     cell.transactionIDLabel.textColor = [self colorForStatus:invoice.status];
+    cell.amountLabel.textColor = [self colorForStatus:invoice.status];
     cell.statusImageView.image = [self imageForStatus:invoice.status];
 
     return cell;
