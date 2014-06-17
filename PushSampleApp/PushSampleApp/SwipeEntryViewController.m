@@ -16,6 +16,8 @@
 
 #define kStatusWaiting @"Waiting for Card reader"
 #define kStatusFound   @"Reader Connected and Ready"
+#define kStatusSwiped  @"Card Swiped..Processing"
+#define kStatusDone    @"Transaction Complete"
 
 @interface SwipeEntryViewController ()
 
@@ -97,6 +99,9 @@
     [self showAlertWithTitle:@"Payment" andMessage:@"Payment Complete, press the done button"];
     
     [[self.navigationItem rightBarButtonItem] setEnabled:YES];
+    [[self.navigationItem leftBarButtonItem] setEnabled:NO];
+    
+    self.txtReaderStatus.text = kStatusDone;
 }
 
 #pragma mark PPHTransactionControllerDelegate
@@ -142,6 +147,8 @@
 -(void)didCompleteCardSwipe:(PPHCardSwipeData*)card
 {
 	NSLog(@"Got card swipe!");
+    
+    self.txtReaderStatus.text = kStatusSwiped;
 }
 
 -(void)didFailToReadCard

@@ -128,7 +128,9 @@
     [self showAlertWithTitle:@"Payment" andMessage:@"Payment Complete, press the done button"];
     
     [[self.navigationItem rightBarButtonItem] setEnabled:YES];
+    [[self.navigationItem leftBarButtonItem] setEnabled:YES];
     self.btnConfirmPayment.enabled = NO;
+    self.spinProcessing.hidden = YES;
 }
 
 -(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
