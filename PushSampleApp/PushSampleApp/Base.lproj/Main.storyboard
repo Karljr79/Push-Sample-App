@@ -203,6 +203,25 @@
                                 <color key="progressTintColor" red="0.38534927559999999" green="1" blue="0.98808799469999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="trackTintColor" red="0.73259627764863833" green="0.76996043090003763" blue="0.78174824617346939" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ALK-s3-QYb">
+                                <rect key="frame" x="236" y="429" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="toggleCheckIn:" destination="hRt-j5-A25" eventType="valueChanged" id="fMe-iN-gRq"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Check In Merchant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MU-M5-Pvc">
+                                <rect key="frame" x="20" y="439" width="146" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zHa-VY-sAl">
+                                <rect key="frame" x="250" y="435" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -210,6 +229,8 @@
                     <connections>
                         <outlet property="barBattery" destination="hFt-yU-FMB" id="LpD-AQ-1zP"/>
                         <outlet property="spinCardDetect" destination="QGq-1K-9R8" id="MWb-ao-MLX"/>
+                        <outlet property="spinCheckIn" destination="zHa-VY-sAl" id="hGn-vl-Fzh"/>
+                        <outlet property="switchCheckIn" destination="ALK-s3-QYb" id="wbP-5Q-fiU"/>
                         <outlet property="txtCardReaderStatus" destination="79w-Cn-ECT" id="W2e-kp-hKr"/>
                         <outlet property="txtReaderBattery" destination="BPd-PB-8vx" id="ncF-m6-w5g"/>
                         <outlet property="txtReaderFamily" destination="JhL-Qg-1mw" id="1l9-xH-CTl"/>
@@ -708,11 +729,25 @@
                                     <segue destination="0Am-Ac-V9a" kind="modal" identifier="SwipeEntry" id="0oS-2O-7BH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYX-gO-Jzj">
+                                <rect key="frame" x="84" y="505" width="153" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.53774659309999995" green="0.6867020036" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Checked In Cust.">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonCheckin:" destination="VK7-oW-sPw" eventType="touchUpInside" id="aWE-Uz-dph"/>
+                                    <segue destination="znC-fz-X6l" kind="modal" identifier="CheckIn" id="6Zy-Ze-LTN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Invoice Payment" id="Rm5-D5-8Rl"/>
                     <connections>
+                        <outlet property="buttonCheckin" destination="aYX-gO-Jzj" id="Ddb-GX-ZuQ"/>
                         <outlet property="buttonManual" destination="jDT-hF-LQL" id="k13-sg-biW"/>
                         <outlet property="buttonRefund" destination="ut0-ba-Pzm" id="Asj-mS-NTO"/>
                         <outlet property="buttonSwipe" destination="ojL-Ue-4nw" id="8MR-8r-8df"/>
@@ -1111,6 +1146,46 @@
             </objects>
             <point key="canvasLocation" x="2875" y="1755"/>
         </scene>
+        <!--Check In View Controller - Checked In Customers-->
+        <scene sceneID="dgT-Ci-Z94">
+            <objects>
+                <tableViewController id="e9c-nJ-tFX" customClass="CheckInViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="d12-Xk-bCJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="e9c-nJ-tFX" id="OJ3-x6-uon"/>
+                            <outlet property="delegate" destination="e9c-nJ-tFX" id="NjY-Lj-RrM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Checked In Customers" id="RT4-c0-6Nw">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fxC-x4-7ea">
+                            <connections>
+                                <action selector="cancel:" destination="e9c-nJ-tFX" id="M2n-db-MTk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jgQ-JE-fla" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2875" y="2447"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Q8w-Ki-HBz">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="znC-fz-X6l" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="I7f-tu-0YJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="e9c-nJ-tFX" kind="relationship" relationship="rootViewController" id="7Ne-zS-bVS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rbo-qR-DLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2343" y="2447"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qw2-mY-utv">
             <objects>
@@ -1199,6 +1274,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="82R-4g-8YI"/>
+        <segue reference="nIw-Uo-cOT"/>
     </inferredMetricsTieBreakers>
 </document>

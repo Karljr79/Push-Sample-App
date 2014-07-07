@@ -170,6 +170,13 @@
         swipeEntryViewController.invoiceID = self.invoiceID;
         swipeEntryViewController.delegate = self;
     }
+    else if ([segue.identifier isEqualToString:@"CheckIn"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        CheckInViewController *checkInViewController = [navigationController viewControllers][0];
+        checkInViewController.invoiceID = self.invoiceID;
+        checkInViewController.delegate = self;
+    }
 }
 
 #pragma mark - ManualEntryViewControllerDelegate
@@ -186,6 +193,11 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - CheckInViewControllerDelegate
 
+- (void)checkInViewControllerDidCancel:(CheckInViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

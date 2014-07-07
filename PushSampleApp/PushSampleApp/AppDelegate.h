@@ -17,6 +17,8 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) NSMutableArray *_invoices;
 @property (strong, nonatomic) LoginViewController *viewController;
+@property (assign, nonatomic) BOOL isMerchantCheckedin;
+@property (strong, nonatomic) PPHLocation *merchantLocation;
 
 -(void)addInvoice:(Invoice *)invoiceToAdd;
 -(NSString*)getUnpaidInvoiceCount;

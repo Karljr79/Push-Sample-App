@@ -22,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *txtReaderRev;
 @property (weak, nonatomic) IBOutlet UILabel *txtReaderBattery;
 @property (weak, nonatomic) IBOutlet UIProgressView *barBattery;
+@property (weak, nonatomic) IBOutlet UISwitch *switchCheckIn;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinCheckIn;
+- (IBAction)toggleCheckIn:(id)sender;
 
 
 @end

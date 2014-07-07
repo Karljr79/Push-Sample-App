@@ -171,20 +171,20 @@
                 }
                 else
                 {
-                    // We've got a ticket, we've got a merchant - let's fill out our merchant object which we'll
-                    // give to the SDK once we complete the login process.
-                    //
-                    NSDictionary *yourMerchant = [JSON objectForKey:@"merchant"];
+//                    // We've got a ticket, we've got a merchant - let's fill out our merchant object which we'll
+//                    // give to the SDK once we complete the login process.
+//                    //
+//                    NSDictionary *yourMerchant = [JSON objectForKey:@"merchant"];
                     
                     self.merchant = [[PPHMerchantInfo alloc] init];
                     self.merchant.invoiceContactInfo = [[PPHInvoiceContactInfo alloc]
-                                                        initWithCountryCode: [yourMerchant objectForKey:@"country"]
-                                                        city:[yourMerchant objectForKey:@"city"]
-                                                        addressLineOne:[yourMerchant objectForKey:@"line1"]];
-                    self.merchant.invoiceContactInfo.businessName = [yourMerchant objectForKey:@"businessName"];
-                    self.merchant.invoiceContactInfo.state = [yourMerchant objectForKey:@"state"];
-                    self.merchant.invoiceContactInfo.postalCode = [yourMerchant objectForKey:@"postalCode"];
-                    self.merchant.currencyCode = [yourMerchant objectForKey:@"currency"];
+                                                        initWithCountryCode: @"US"
+                                                        city: @"San Jose"
+                                                        addressLineOne:@"2141 N First St"];
+                    self.merchant.invoiceContactInfo.businessName = @"Karl's PPH Sample Store";
+                    self.merchant.invoiceContactInfo.state = @"CA";
+                    self.merchant.invoiceContactInfo.postalCode = @"95131";
+                    self.merchant.currencyCode = @"USD";
                     
                     if ([JSON objectForKey:@"access_token"])
                     {
