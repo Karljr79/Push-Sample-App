@@ -697,10 +697,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDT-hF-LQL">
-                                <rect key="frame" x="84" y="407" width="153" height="30"/>
+                                <rect key="frame" x="21" y="376" width="126" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.53774659309999995" green="0.6867020036" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Manual Card Entry">
+                                <state key="normal" title="Manual Entry">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -708,7 +708,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ut0-ba-Pzm">
-                                <rect key="frame" x="84" y="396" width="153" height="30"/>
+                                <rect key="frame" x="84" y="423" width="153" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.53774659309999995" green="0.6867020036" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Refund Sale">
@@ -719,10 +719,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojL-Ue-4nw">
-                                <rect key="frame" x="84" y="456" width="153" height="30"/>
+                                <rect key="frame" x="173" y="376" width="127" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.53774659309999995" green="0.6867020036" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Swipe Credit Card">
+                                <state key="normal" title="Swipe Card">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -730,7 +730,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYX-gO-Jzj">
-                                <rect key="frame" x="84" y="505" width="153" height="30"/>
+                                <rect key="frame" x="84" y="461" width="153" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.53774659309999995" green="0.6867020036" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Checked In Cust.">
@@ -738,7 +738,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonCheckin:" destination="VK7-oW-sPw" eventType="touchUpInside" id="aWE-Uz-dph"/>
                                     <segue destination="znC-fz-X6l" kind="modal" identifier="CheckIn" id="6Zy-Ze-LTN"/>
                                 </connections>
                             </button>
@@ -1144,13 +1143,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Giw-Dq-XlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2875" y="1755"/>
+            <point key="canvasLocation" x="2875" y="1641"/>
         </scene>
         <!--Check In View Controller - Checked In Customers-->
         <scene sceneID="dgT-Ci-Z94">
             <objects>
                 <tableViewController id="e9c-nJ-tFX" customClass="CheckInViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="d12-Xk-bCJ">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="22" sectionFooterHeight="22" id="d12-Xk-bCJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1165,11 +1164,16 @@
                                 <action selector="cancel:" destination="e9c-nJ-tFX" id="M2n-db-MTk"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="LAo-GG-tDt">
+                            <connections>
+                                <segue destination="DVn-hm-SJI" kind="modal" id="4YM-eb-pMd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jgQ-JE-fla" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2875" y="2447"/>
+            <point key="canvasLocation" x="2875" y="2307"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Q8w-Ki-HBz">
@@ -1184,7 +1188,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbo-qR-DLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2343" y="2447"/>
+            <point key="canvasLocation" x="2343" y="2307"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qw2-mY-utv">
@@ -1199,7 +1203,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjo-Fc-P2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2339" y="1755"/>
+            <point key="canvasLocation" x="2339" y="1641"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zgK-xe-yOC">
@@ -1274,6 +1278,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="nIw-Uo-cOT"/>
+        <segue reference="4YM-eb-pMd"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,8 @@
 //
 
 #import "CheckInViewController.h"
+#import "CheckInCustomerCell.h"
+#import "PaymentStatusViewController.h"
 
 #import <PayPalHereSDK/PayPalHereSDK.h>
 #import <PayPalHereSDK/PPHLocationCheckin.h>
@@ -36,6 +38,8 @@
 {
     [super viewDidLoad];
     
+    [[self.navigationItem rightBarButtonItem] setEnabled:NO];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -49,32 +53,109 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+//handle cancel button
+- (IBAction)cancel:(id)sender
+{
+    [self.delegate checkInViewControllerDidCancel:self];
+}
+
+-(void)takePaymentUsingCheckinClient:(PPHLocationCheckin*)checkinMember
+{
+    PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
+    [tm setCheckedInClient:checkinMember];
+    [tm processPaymentWithPaymentType:ePPHPaymentMethodPaypal
+            withTransactionController:self
+                    completionHandler:^(PPHTransactionResponse *record) {
+
+                        if (record.error) {
+                            NSString *message = [NSString stringWithFormat:@"Payment using checkin Failed with an error: %@", record.error.apiMessage];
+                            [self showAlertWithTitle:@"Payment Failed" andMessage:message];
+                        }
+                        else {
+                            self.transactionResponse = record;
+                            [self completeTransaction];
+                        }
+                        tm.ignoreHardwareReaders = NO;    //Back to the default running state.
+                    }];
+    
+}
+
+-(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
+{
+    UIAlertView *alertView =
+    [[UIAlertView alloc]
+     initWithTitle:title
+     message: message
+     delegate:self
+     cancelButtonTitle:@"OK"
+     otherButtonTitles:nil];
+    [alertView show];
+}
+
+-(void)completeTransaction
+{
+    //complete transaction and sync up data
+    if(self.transactionResponse.record != nil)
+    {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        // Add the record into an array so that we can issue a refund later.
+        Invoice* myInvoice = (Invoice *)[appDelegate._invoices objectAtIndex:self.invoiceID.integerValue];
+        
+        myInvoice.transactionResponse = self.transactionResponse;
+        myInvoice.transactionID = self.transactionResponse.record.transactionId;
+    }
+    
+    [self showAlertWithTitle:@"Payment" andMessage:@"PayPal payment Complete, press the done button"];
+    
+    [[self.navigationItem rightBarButtonItem] setEnabled:YES];
+    [[self.navigationItem leftBarButtonItem] setEnabled:YES];
+}
+
+
+#pragma mark UITableViewDataSource
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.checkedInClients count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CheckInCustomerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CheckInCellIdentifier" forIndexPath:indexPath];
+    
+    //has the cell been initialized?
+    if (cell == nil)
+    {
+        cell = [[CheckInCustomerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CheckInCellIdentifier"];
+    }
+    
+    PPHLocationCheckin *client = [self.checkedInClients objectAtIndex:indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:@"default_image.jpg"];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *imgData = [NSData dataWithContentsOfURL:client.photoUrl];
+        if (imgData) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIImage *actualImage = [UIImage imageWithData:imgData];
+                CheckInCustomerCell *c = (CheckInCustomerCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+                c.imageView.image = actualImage;
+                [c.imageView setNeedsDisplay];
+            });
+        }
+    });
+
+    // load the name of the checked in client
+    cell.textLabel.text = client.customerName;
+    return cell;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    //we only have one section
+    return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -114,21 +195,41 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UINavigationController *navigationController = segue.destinationViewController;
+    PaymentStatusViewController *paymentVC = [navigationController viewControllers][0];
+    paymentVC.transactionResponse = self.transactionResponse;
+    paymentVC.invoiceID = self.invoiceID;
 }
-*/
 
-//handle cancel button
-- (IBAction)cancel:(id)sender
+
+#pragma mark PPHLocationWatcherDelegate
+-(void)locationWatcher:(PPHLocationWatcher *)watcher didCompleteUpdate:(NSArray *)openTabs wasModified:(BOOL)wasModified
 {
-    [self.delegate checkInViewControllerDidCancel:self];
+    //here is where we grab the checked in clients from PayPal
+    NSLog(@"Got the response didCompleteUpdate from Location Watcher with list of checked-in clients. No. of clients: %d",[openTabs count]);
+    self.checkedInClients = [[NSMutableArray alloc] initWithArray:openTabs];
+    [self.tableView reloadData];
+}
+
+-(void)locationWatcher: (PPHLocationWatcher*) watcher didDetectNewTab: (PPHLocationCheckin*) checkin
+{
+    NSLog(@"Got the new checked in client after did the update. Need to update the rows");
+}
+
+-(void)locationWatcher: (PPHLocationWatcher*) watcher didDetectRemovedTab: (PPHLocationCheckin*) checkin
+{
+    NSLog(@"One of the checked in client checked out. Need to update the rows");
+}
+
+-(void)locationWatcher: (PPHLocationWatcher*) watcher didReceiveError: (PPHError*) error
+{
+    NSLog(@"Oops got the error while looking for checked in clients..");
 }
 
 @end

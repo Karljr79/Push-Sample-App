@@ -55,6 +55,8 @@
 		13669AA8193E992200011C38 /* logoMC.png in Resources */ = {isa = PBXBuildFile; fileRef = 13669AA5193E992200011C38 /* logoMC.png */; };
 		13669AA9193E992200011C38 /* logoVisa.png in Resources */ = {isa = PBXBuildFile; fileRef = 13669AA6193E992200011C38 /* logoVisa.png */; };
 		136A0FA91947D928007E34DA /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 136A0FA81947D928007E34DA /* gear.png */; };
+		1395FB03196C596800678C5E /* CheckInCustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1395FB02196C596800678C5E /* CheckInCustomerCell.m */; };
+		1395FB05196C5A8E00678C5E /* default_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1395FB04196C5A8E00678C5E /* default_image.jpg */; };
 		13EDD3C1193CD772009108C5 /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 13EDD3BF193CD772009108C5 /* cross.png */; };
 		13F10197193D45E300D3E7BA /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F10196193D45E300D3E7BA /* InfoViewController.m */; };
 		BB05E93218A2AC4800F0D3CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB05E93118A2AC4800F0D3CA /* Foundation.framework */; };
@@ -157,6 +159,9 @@
 		13669AA5193E992200011C38 /* logoMC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoMC.png; sourceTree = "<group>"; };
 		13669AA6193E992200011C38 /* logoVisa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoVisa.png; sourceTree = "<group>"; };
 		136A0FA81947D928007E34DA /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		1395FB01196C596800678C5E /* CheckInCustomerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInCustomerCell.h; sourceTree = "<group>"; };
+		1395FB02196C596800678C5E /* CheckInCustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInCustomerCell.m; sourceTree = "<group>"; };
+		1395FB04196C5A8E00678C5E /* default_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_image.jpg; sourceTree = "<group>"; };
 		13EDD3BF193CD772009108C5 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
 		13F10195193D45E300D3E7BA /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		13F10196193D45E300D3E7BA /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
@@ -348,6 +353,8 @@
 				1333DDE8193F853100420FA6 /* PaymentStatusViewController.m */,
 				13F10195193D45E300D3E7BA /* InfoViewController.h */,
 				13F10196193D45E300D3E7BA /* InfoViewController.m */,
+				1395FB01196C596800678C5E /* CheckInCustomerCell.h */,
+				1395FB02196C596800678C5E /* CheckInCustomerCell.m */,
 				134A8263196B54A800FB9B74 /* CheckInViewController.h */,
 				134A8264196B54A800FB9B74 /* CheckInViewController.m */,
 				1333DDEA193FC4C600420FA6 /* SwipeEntryViewController.h */,
@@ -371,6 +378,7 @@
 		BBBC27B518A5ACED008E940F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1395FB04196C5A8E00678C5E /* default_image.jpg */,
 				136A0FA81947D928007E34DA /* gear.png */,
 				131B4DF41947B59800247AA0 /* PPHlogo.png */,
 				131B4DF019477D3600247AA0 /* Refunded.png */,
@@ -482,6 +490,7 @@
 				BBBC27BF18A5ACED008E940F /* list-star-7.png in Resources */,
 				136A0FA91947D928007E34DA /* gear.png in Resources */,
 				1345862419465B3200C4A302 /* check.png in Resources */,
+				1395FB05196C5A8E00678C5E /* default_image.jpg in Resources */,
 				131B4DF119477D3600247AA0 /* Refunded.png in Resources */,
 				13669AA9193E992200011C38 /* logoVisa.png in Resources */,
 				BBBC27C118A5ACED008E940F /* write-7.png in Resources */,
@@ -516,6 +525,7 @@
 				13028C3F1937C3C300F4B5E4 /* AFJSONRequestOperation.m in Sources */,
 				13028C441937C3C300F4B5E4 /* UIImageView+AFNetworking.m in Sources */,
 				133C020A193E47B900767F87 /* ManualEntryViewController.m in Sources */,
+				1395FB03196C596800678C5E /* CheckInCustomerCell.m in Sources */,
 				134A8265196B54A800FB9B74 /* CheckInViewController.m in Sources */,
 				133FB2A2193945130022C1E9 /* InvoiceCell.m in Sources */,
 				BB05E94218A2AC4800F0D3CA /* AppDelegate.m in Sources */,
