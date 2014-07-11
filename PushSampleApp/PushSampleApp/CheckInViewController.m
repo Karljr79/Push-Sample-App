@@ -40,6 +40,15 @@
     
     [[self.navigationItem rightBarButtonItem] setEnabled:NO];
     
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CheckInCellIdentifier"];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.checkinLocationId = appDelegate.merchantLocation.locationId;
+    self.locationWatcher = [[PayPalHereSDK sharedLocalManager] watcherForLocationId:self.checkinLocationId withDelegate:self];
+    
+    _locationWatcher.delegate = self;
+    [_locationWatcher updatePeriodically:20 withMaximumInterval:60];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -51,6 +60,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    
+    // If we are becoming invisible then let's ask
+    // the location watcher to stop sending us periodic updates.  Also
+    // clear out the delegate.
+    _locationWatcher.delegate = nil;
+    [_locationWatcher stopPeriodicUpdates];
 }
 
 //handle cancel button
@@ -154,6 +172,17 @@
 {
     //we only have one section
     return 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PPHLocationCheckin *client = [self.checkedInClients objectAtIndex:indexPath.row];
+    if (nil != client){
+        NSLog(@"Calling takePaymentUsingCheckinClient with the checkedin client: %@",client.customerName);
+        [self takePaymentUsingCheckinClient:client];
+    }else{
+        NSLog(@"Oops! Selected row has no checkeding client..");
+    }
 }
 
 

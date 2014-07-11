@@ -140,6 +140,7 @@
         self.txtTotalLabel.text = @"Total Paid";
         self.buttonManual.hidden = YES;
         self.buttonSwipe.hidden = YES;
+        self.buttonCheckin.hidden = YES;
         self.buttonRefund.hidden = NO;
     }
     else if ([self.currInvoice.status isEqual:@"Refund"])
@@ -148,6 +149,7 @@
         self.buttonManual.hidden = YES;
         self.buttonSwipe.hidden = YES;
         self.buttonRefund.hidden = YES;
+        self.buttonCheckin.hidden = YES;
     }
 }
 

@@ -225,7 +225,7 @@
 -(void)didReceiveCardReaderMetadata:(PPHCardReaderMetadata *)metadata
 {
 	if (metadata == nil) {
-		NSLog(@"didReceiveCardReaderMetadata got NIL metada! Ignoring..");
+		NSLog(@"didReceiveCardReaderMetadata got NIL metadata! Ignoring..");
 		return;
 	}
     

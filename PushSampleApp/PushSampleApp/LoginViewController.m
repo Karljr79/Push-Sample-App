@@ -192,6 +192,10 @@
                         // the sample server.  Let's give these credentials to the SDK and conclude
                         // the login process.
                         [self setActiveMerchantWithAccessTokenDict:JSON];
+                        
+                        NSString *accessToken = [JSON objectForKey:@"access_token"];
+                        
+                        NSLog(@"Access Token %@", accessToken);
                     }
                     else {
                         // We don't have an access_token?  Then we need to login to PayPal's oauth process.
