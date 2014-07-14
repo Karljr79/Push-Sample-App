@@ -57,15 +57,19 @@
     
     [tm beginPayment];
     
-    NSArray *itemList = @[kBURGERS, kFRIES, kSHAKES, kPIES];
-    
-    for (NSString *itemName in itemList)
+    //if the invoice has not been paid already
+    if ([self.currInvoice.status isEqual:@"Refund"])
     {
-        NSMutableDictionary *items = [self.currInvoice.shoppingCart valueForKey:itemName];
-        NSDecimalNumber *quantity = [items valueForKey:kQUANTITY];
-        NSDecimalNumber *costEach = [items valueForKey:kPRICE];
+        NSArray *itemList = @[kBURGERS, kFRIES, kSHAKES, kPIES];
         
-        [tm.currentInvoice addItemWithId:itemName name:itemName quantity:quantity unitPrice:costEach taxRate:nil taxRateName:nil];
+        for (NSString *itemName in itemList)
+        {
+            NSMutableDictionary *items = [self.currInvoice.shoppingCart valueForKey:itemName];
+            NSDecimalNumber *quantity = [items valueForKey:kQUANTITY];
+            NSDecimalNumber *costEach = [items valueForKey:kPRICE];
+            
+            [tm.currentInvoice addItemWithId:itemName name:itemName quantity:quantity unitPrice:costEach taxRate:nil taxRateName:nil];
+        }
     }
 
 }
@@ -85,7 +89,12 @@
 -(void)handleRefund:(PPHTransactionRecord *)txRecord
 {
     PPHTransactionManager *tm = [PayPalHereSDK sharedTransactionManager];
-    [tm beginRefund:txRecord forAmount:txRecord.invoice.totalAmount completionHandler:^(PPHPaymentResponse * response)
+    
+    [tm cancelPayment];
+    
+    PPHAmount *amt = txRecord.invoice.totalAmount;
+    
+    [tm beginRefund:txRecord forAmount:amt completionHandler:^(PPHPaymentResponse * response)
     {
         if(response.error)
         {

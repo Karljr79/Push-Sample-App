@@ -29,28 +29,28 @@
      
      [NSMutableDictionary
       dictionaryWithObjectsAndKeys:
-      [NSDecimalNumber numberWithDouble:5.95], kPRICE,
+      [NSDecimalNumber numberWithDouble:5.00], kPRICE,
       [NSDecimalNumber numberWithInt:0], kQUANTITY,
       nil],
      kBURGERS,
      
      [NSMutableDictionary
       dictionaryWithObjectsAndKeys:
-      [NSDecimalNumber numberWithDouble:2.99], kPRICE,
+      [NSDecimalNumber numberWithDouble:2.00], kPRICE,
       [NSDecimalNumber numberWithInt:0], kQUANTITY,
       nil],
      kFRIES,
      
      [NSMutableDictionary
       dictionaryWithObjectsAndKeys:
-      [NSDecimalNumber numberWithDouble:4.79], kPRICE,
+      [NSDecimalNumber numberWithDouble:4.00], kPRICE,
       [NSDecimalNumber numberWithInt:0], kQUANTITY,
       nil],
      kSHAKES,
      
      [NSMutableDictionary
       dictionaryWithObjectsAndKeys:
-      [NSDecimalNumber numberWithDouble:2.49], kPRICE,
+      [NSDecimalNumber numberWithDouble:3.00], kPRICE,
       [NSDecimalNumber numberWithInt:0], kQUANTITY,
       nil],
      kPIES,
