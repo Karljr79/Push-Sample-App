@@ -31,10 +31,9 @@
 {
     [super viewDidLoad];
     
-
     
     //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -49,6 +48,16 @@
     if (![[appDelegate getUnpaidInvoiceCount] isEqualToString:@"0"])
     {
         [self.navigationController.tabBarItem setBadgeValue:[appDelegate getUnpaidInvoiceCount]];
+    }
+    
+    if (appDelegate.isLoggedIn == FALSE)
+    {
+        [self showAlertWithTitle:@"Invoice Screen" andMessage:@"Please Log In Before viewing this page"];
+        [[self.navigationItem rightBarButtonItem] setEnabled:NO];
+    }
+    else
+    {
+        [[self.navigationItem rightBarButtonItem] setEnabled:YES];
     }
     
     [self.tableView reloadData];
@@ -120,6 +129,18 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return NO;
+}
+
+-(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
+{
+    UIAlertView *alertView =
+    [[UIAlertView alloc]
+     initWithTitle:title
+     message: message
+     delegate:self
+     cancelButtonTitle:@"OK"
+     otherButtonTitles:nil];
+    [alertView show];
 }
 
 #pragma mark - InvoiceDetailViewControllerDelegate

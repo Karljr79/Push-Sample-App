@@ -322,6 +322,11 @@
                            //
                            self.txtLoginStatus.text = @"Logged In";
                            
+                           AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                           
+                           delegate.isLoggedIn = TRUE;
+
+                           
                            [self transitionToInvoicesViewController];
                        }
                        

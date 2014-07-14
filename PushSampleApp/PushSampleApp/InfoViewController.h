@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *switchCheckIn;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinCheckIn;
 - (IBAction)toggleCheckIn:(id)sender;
+- (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 
 
 @end

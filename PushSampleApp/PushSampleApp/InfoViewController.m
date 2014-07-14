@@ -72,6 +72,8 @@
 {
     [super viewWillAppear:animated];
     
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     self.cardWatcher = [[PPHCardReaderWatcher alloc] initWithSimpleDelegate:self];
     
     [[PayPalHereSDK sharedCardReaderManager] beginMonitoring];
@@ -83,6 +85,16 @@
 	else {
 		self.txtCardReaderStatus.text = kStatusWaiting;
 	}
+    
+    if (appDelegate.isLoggedIn == FALSE)
+    {
+        self.switchCheckIn.enabled = FALSE;
+    }
+    else
+    {
+        self.switchCheckIn.enabled = TRUE;
+    }
+    
     
     self.txtVersion.text = [PayPalHereSDK sdkVersion];
     
@@ -134,31 +146,53 @@
 - (IBAction)toggleCheckIn:(id)sender
 {
     NSLog(@"Check-in button toggled!");
-    
-    if (self.switchCheckIn.on)
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    if (appDelegate.isLoggedIn == TRUE)
     {
-        if (nil != self.merchantLocation)
+        if (self.switchCheckIn.on)
         {
-            self.switchCheckIn.hidden = YES;
-            self.spinCheckIn.hidden = NO;
-            [self.spinCheckIn startAnimating];
-            [self getMerchantCheckin:self.merchantLocation];
+            if (nil != self.merchantLocation)
+            {
+                self.switchCheckIn.hidden = YES;
+                self.spinCheckIn.hidden = NO;
+                [self.spinCheckIn startAnimating];
+                [self getMerchantCheckin:self.merchantLocation];
+            }
+            else
+            {
+                self.isMerchantCheckinPending = TRUE;
+            }
         }
         else
         {
-            self.isMerchantCheckinPending = TRUE;
+            NSLog(@"In Check In Switch Off");
+            [self.switchCheckIn setOn:NO animated:YES];
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            PPHLocation *myLocation = appDelegate.merchantLocation;
+            myLocation.isAvailable = NO;
+            appDelegate.merchantLocation = nil;
+            appDelegate.isMerchantCheckedin = NO;
         }
     }
     else
     {
-        NSLog(@"In Check In Switch Off");
-        [self.switchCheckIn setOn:NO animated:YES];
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        PPHLocation *myLocation = appDelegate.merchantLocation;
-        myLocation.isAvailable = NO;
-        appDelegate.merchantLocation = nil;
-        appDelegate.isMerchantCheckedin = NO;
+        [self showAlertWithTitle:@"Merchant Check-in" andMessage:@"Please log in before trying to check in"];
     }
+    
+    
+}
+
+-(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message
+{
+    UIAlertView *alertView =
+    [[UIAlertView alloc]
+     initWithTitle:title
+     message: message
+     delegate:self
+     cancelButtonTitle:@"OK"
+     otherButtonTitles:nil];
+    [alertView show];
 }
 
 #pragma mark -

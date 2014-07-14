@@ -16,6 +16,7 @@
 - (UIImage *)imageForStatus:(NSString*)status;
 - (UIColor *)colorForStatus:(NSString*)status;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+-(void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 
 
 

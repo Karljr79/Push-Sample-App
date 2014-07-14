@@ -58,7 +58,7 @@
     [tm beginPayment];
     
     //if the invoice has not been paid already
-    if ([self.currInvoice.status isEqual:@"Refund"])
+    if (![self.currInvoice.status isEqual:@"Refund"])
     {
         NSArray *itemList = @[kBURGERS, kFRIES, kSHAKES, kPIES];
         
