@@ -48,6 +48,7 @@
 		134A826D196B565400FB9B74 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 134A826C196B565400FB9B74 /* libsqlite3.dylib */; };
 		134A826F196B565F00FB9B74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 134A826E196B565F00FB9B74 /* libz.dylib */; };
 		134A8271196B566F00FB9B74 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 134A8270196B566F00FB9B74 /* CoreBluetooth.framework */; };
+		135E5E9119D238FC00B98B61 /* Test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 135E5E9019D238FC00B98B61 /* Test.gpx */; };
 		1363F642193D2671002FD7D3 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1363F641193D2671002FD7D3 /* PaymentViewController.m */; };
 		1363F645193D2C74002FD7D3 /* Paid.png in Resources */ = {isa = PBXBuildFile; fileRef = 1363F643193D2C74002FD7D3 /* Paid.png */; };
 		1363F646193D2C74002FD7D3 /* Unpaid.png in Resources */ = {isa = PBXBuildFile; fileRef = 1363F644193D2C74002FD7D3 /* Unpaid.png */; };
@@ -151,6 +152,7 @@
 		134A826C196B565400FB9B74 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		134A826E196B565F00FB9B74 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		134A8270196B566F00FB9B74 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		135E5E9019D238FC00B98B61 /* Test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test.gpx; sourceTree = "<group>"; };
 		1363F640193D2671002FD7D3 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		1363F641193D2671002FD7D3 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		1363F643193D2C74002FD7D3 /* Paid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Paid.png; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 		BB05E92518A2AC4800F0D3CA = {
 			isa = PBXGroup;
 			children = (
+				135E5E9019D238FC00B98B61 /* Test.gpx */,
 				BB05E93718A2AC4800F0D3CA /* PushSampleApp */,
 				BB05E93018A2AC4800F0D3CA /* Frameworks */,
 				BB05E92F18A2AC4800F0D3CA /* Products */,
@@ -447,6 +450,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = OtherLevels;
 				TargetAttributes = {
+					BB05E92D18A2AC4800F0D3CA = {
+						DevelopmentTeam = PUG6WS969Z;
+					};
 					BB05E94E18A2AC4800F0D3CA = {
 						TestTargetID = BB05E92D18A2AC4800F0D3CA;
 					};
@@ -485,6 +491,7 @@
 				BB05E94A18A2AC4800F0D3CA /* Images.xcassets in Resources */,
 				13669AA7193E992200011C38 /* logoAmex.png in Resources */,
 				BB05E93C18A2AC4800F0D3CA /* InfoPlist.strings in Resources */,
+				135E5E9119D238FC00B98B61 /* Test.gpx in Resources */,
 				131B4DF51947B59800247AA0 /* PPHlogo.png in Resources */,
 				13669AA8193E992200011C38 /* logoMC.png in Resources */,
 				BBBC27BF18A5ACED008E940F /* list-star-7.png in Resources */,
@@ -679,6 +686,7 @@
 					"-lstdc++",
 				);
 				PRODUCT_NAME = PushSampleApp;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -709,6 +717,7 @@
 					"-lstdc++",
 				);
 				PRODUCT_NAME = PushSampleApp;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

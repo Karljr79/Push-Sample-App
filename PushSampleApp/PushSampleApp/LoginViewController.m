@@ -179,11 +179,11 @@
                     self.merchant = [[PPHMerchantInfo alloc] init];
                     self.merchant.invoiceContactInfo = [[PPHInvoiceContactInfo alloc]
                                                         initWithCountryCode: @"US"
-                                                        city: @"San Jose"
-                                                        addressLineOne:@"2141 N First St"];
+                                                        city: @"Redwood City"
+                                                        addressLineOne:@"1569 Oxford St"];
                     self.merchant.invoiceContactInfo.businessName = @"Karl's PPH Sample Store";
                     self.merchant.invoiceContactInfo.state = @"CA";
-                    self.merchant.invoiceContactInfo.postalCode = @"95131";
+                    self.merchant.invoiceContactInfo.postalCode = @"94061";
                     self.merchant.currencyCode = @"USD";
                     
                     if ([JSON objectForKey:@"access_token"])
