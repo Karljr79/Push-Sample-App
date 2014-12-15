@@ -44,7 +44,7 @@
     
 //#warning Change this block to use your server's URL
     //This is the PayPal sample server
-    self.serviceHost = @"http://desolate-wave-3684.herokuapp.com";
+    self.serviceHost = @"http://sdk-sample-server.herokuapp.com";
     //This is the level of service to use
     self.serviceArray = [NSURL URLWithString:@"https://www.sandbox.paypal.com/webapps/"];
     self.txtServiceUsed.text = @"Sandbox";
